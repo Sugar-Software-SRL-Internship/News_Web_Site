@@ -2,3 +2,4 @@
 .vscode/
 .idea/
 backend/db.sqlite3
+.env
