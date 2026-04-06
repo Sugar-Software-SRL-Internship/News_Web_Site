@@ -17,12 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
-from backend.users.views import accept_invite_redirect
+from users.views import accept_invite
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-    path("invitations/accept/<str:key>/", accept_invite_redirect),
+    path("accept-invite/<uuid:key>/", accept_invite,name="accept-invite"),
 
     path("invitations/", include("invitations.urls")),
     path("api/users/", include("users.urls")),

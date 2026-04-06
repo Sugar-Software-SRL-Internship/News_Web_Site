@@ -21,6 +21,8 @@ class UserAdmin(ModelAdmin):
 
         if is_new:
             obj.is_active = False
+            obj.set_unusable_password()
+            obj.is_staff = False
 
         super().save_model(request, obj, form, change)
 
@@ -28,9 +30,7 @@ class UserAdmin(ModelAdmin):
             create_invitation(obj.email, inviter=request.user, request=request)
 
     def invite_status_display(self, obj):
-        """
-        Отображение статуса инвайта в списке
-        """
+
         try:
             invite = Invitation.objects.get(email=obj.email)
             return "Accepted" if invite.accepted else "Pending"

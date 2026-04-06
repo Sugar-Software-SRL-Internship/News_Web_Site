@@ -59,12 +59,20 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 ROOT_URLCONF = 'config.urls'
+LOGIN_REDIRECT_URL = '/admin/'
 
 # --- UNFOLD НАСТРОЙКИ ---
 UNFOLD = {
     "SITE_TITLE": "News Project Admin",
     "SITE_HEADER": "Project Management",
     "SITE_URL": "/",
+
+"STYLES": [
+        lambda request: "https://cdn.tailwindcss.com", # Подгрузит tailwind если локальный не подцепился
+    ],
+    "SCRIPTS": [
+        lambda request: "https://unpkg.com/@phosphor-icons/web", # Иконки для кнопок/инпутов
+    ],
     "COLORS": {
         "primary": {
             "50": "250 245 255", "100": "243 232 255", "200": "233 213 255",
@@ -91,7 +99,7 @@ UNFOLD = {
     },
 }
 
-# --- ШАБЛОНЫ ---
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -118,11 +126,11 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
 }
-ACCOUNT_ADAPTER = "invitations.models.InvitationsAdapter"
-INVITATIONS_ADAPTER = ACCOUNT_ADAPTER
-INVITATIONS_ACCEPT_INVITE_AFTER_SIGNUP = True
+
 INVITATIONS_INVITATION_ONLY = True
 INVITATIONS_GONE_ON_ACCEPT_ERROR = False
+INVITATIONS_LOGIN_REDIRECT = '/admin/login/'
+
 # --- DATABASE ---
 DATABASES = {
     'default': {
@@ -136,6 +144,7 @@ EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # --- AUTH ---
 AUTH_USER_MODEL = 'users.User'
 WSGI_APPLICATION = 'config.wsgi.application'
