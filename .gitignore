@@ -25,4 +25,6 @@ __pycache__/
 
 .idea/
 .vscode/
-
+**/static/
+**/media/
+**/db.sqlite3
