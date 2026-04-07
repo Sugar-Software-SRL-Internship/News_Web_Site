@@ -59,6 +59,8 @@ class MultiMedia(models.Model):
     media_type = models.IntegerField(choices=TypeMedia.choices,default=TypeMedia.TEXT)
     file = models.FileField(upload_to='content/%Y/%m/%d/')
 
+    def __str__(self):
+        return self.title if self.title else f"Image: {self.file.name.split('/')[-1]}"
 
 
 class News(models.Model):
