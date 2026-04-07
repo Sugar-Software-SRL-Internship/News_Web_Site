@@ -1,0 +1,107 @@
+{
+  "navigation": {
+    "home": "Acasă",
+    "news": "Știri",
+    "sport": "Sport",
+    "video": "Video",
+    "live": "Live",
+    "shows": "Emisiuni",
+    "search": "Caută",
+    "menu": "Meniu"
+  },
+  "categories": {
+    "politics": "Politică",
+    "world": "Lume",
+    "business": "Business",
+    "tech": "Tehnologie",
+    "science": "Știință",
+    "health": "Sănătate",
+    "entertainment": "Divertisment",
+    "sport": "Sport"
+  },
+  "home": {
+    "title": "Ultimele știri",
+    "breaking": "Ultima oră",
+    "topStories": "Principalele știri",
+    "mostRead": "Cele mai citite",
+    "recommended": "Recomandate"
+  },
+  "news": {
+    "title": "Știri",
+    "latest": "Ultimele știri",
+    "readMore": "Citește mai mult",
+    "publishedAt": "Publicat la",
+    "updatedAt": "Actualizat la",
+    "author": "Autor",
+    "share": "Distribuie",
+    "relatedArticles": "Articole similare",
+    "breakingNews": "Știre de ultimă oră"
+  },
+  "video": {
+    "title": "Video",
+    "watch": "Urmărește",
+    "duration": "Durată",
+    "views": "Vizualizări",
+    "recommended": "Videoclipuri recomandate",
+    "latest": "Ultimele videoclipuri"
+  },
+  "live": {
+    "title": "Live",
+    "watching": "Se urmărește acum",
+    "startedAt": "Început la",
+    "liveUpdate": "Actualizare Live"
+  },
+  "shows": {
+    "title": "Emisiuni",
+    "episodes": "Episoade",
+    "season": "Sezon",
+    "episode": "Episod",
+    "watchNow": "Urmărește acum"
+  },
+  "search": {
+    "placeholder": "Caută știri...",
+    "results": "Rezultate pentru",
+    "noResults": "Nu s-au găsit rezultate",
+    "searching": "Se caută..."
+  },
+  "common": {
+    "readMore": "Citește mai mult",
+    "loading": "Se încarcă...",
+    "error": "A apărut o eroare",
+    "retry": "Încearcă din nou",
+    "back": "Înapoi",
+    "close": "Închide",
+    "seeAll": "Vezi toate",
+    "share": "Distribuie",
+    "save": "Salvează",
+    "cancel": "Anulează",
+    "confirm": "Confirmă",
+    "yes": "Da",
+    "no": "Nu"
+  },
+  "errors": {
+    "404": "Pagina nu a fost găsită",
+    "500": "Eroare de server",
+    "notFound": "Conținutul nu există",
+    "generic": "Ceva nu a mers bine"
+  },
+  "cookies": {
+    "title": "Folosim cookie-uri",
+    "description": "Folosim cookie-uri pentru a îmbunătăți experiența ta pe site.",
+    "accept": "Acceptă toate",
+    "reject": "Respinge",
+    "settings": "Setări cookie-uri"
+  },
+  "footer": {
+    "about": "Despre noi",
+    "contact": "Contact",
+    "privacy": "Politica de confidențialitate",
+    "terms": "Termeni și condiții",
+    "cookies": "Politica de cookie-uri",
+    "copyright": "Toate drepturile rezervate"
+  },
+  "theme": {
+    "light": "Temă luminoasă",
+    "dark": "Temă întunecată"
+  }
+}
