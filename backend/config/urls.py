@@ -29,6 +29,7 @@ urlpatterns = [
     path("accept-invite/<uuid:key>/", accept_invite,name="accept-invite"),
     path("api/users/", include("users.urls")),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('api/', include('content.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

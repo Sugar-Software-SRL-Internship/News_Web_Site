@@ -5,7 +5,7 @@ from django.http import HttpRequest
 from django.urls import reverse
 
 from .models import  *
-from unfold.admin import ModelAdmin
+from unfold.admin import ModelAdmin,StackedInline
 from django.utils.html import format_html
 from unfold.decorators import display
 
@@ -20,7 +20,7 @@ class TagAdmin(ModelAdmin):
 
 @admin.register(Content)
 class ContentAdmin(ModelAdmin):
-    list_display = ["title", "content_type", "status", "owner", "publish_date"]
+    list_display = ["title", "content_type", "status", "owner", "publish_date",'views']
     list_filter = ["content_type", "status", "category"]
     search_fields = ["title"]
 
@@ -34,6 +34,14 @@ class MultiMediaAdmin(ModelAdmin):
         if obj.media_type == 2 and obj.file:
             return format_html('<img src="{}" style="width: 50px; height: 50px; border-radius: 4px;" />', obj.file.url)
         return  "Video"
+
+
+class NewsInline(StackedInline):
+    model = News
+    fk_name = 'content'
+    extra = 0
+    tab = True
+
 
 @admin.register(News)
 class NewsAdmin(ModelAdmin):
