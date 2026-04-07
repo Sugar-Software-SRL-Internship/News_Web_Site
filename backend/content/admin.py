@@ -10,6 +10,13 @@ from django.utils.html import format_html
 from unfold.decorators import display
 
 
+class NewsInline(StackedInline):
+    model = News
+    fk_name = 'content'
+    extra = 0
+    tab = True
+
+
 @admin.register(Category)
 class CategoryAdmin(ModelAdmin):
     pass
@@ -23,6 +30,7 @@ class ContentAdmin(ModelAdmin):
     list_display = ["title", "content_type", "status", "owner", "publish_date",'views']
     list_filter = ["content_type", "status", "category"]
     search_fields = ["title"]
+    inlines = [NewsInline]
 
 @admin.register(MultiMedia)
 class MultiMediaAdmin(ModelAdmin):
@@ -36,11 +44,6 @@ class MultiMediaAdmin(ModelAdmin):
         return  "Video"
 
 
-class NewsInline(StackedInline):
-    model = News
-    fk_name = 'content'
-    extra = 0
-    tab = True
 
 
 @admin.register(News)
@@ -53,6 +56,7 @@ class NewsAdmin(ModelAdmin):
         "preview"]
     search_fields = ["headline"]
     raw_id_fields = ['thumbnail']
+
 
     @display(description="Fixed Now", boolean=True)
     def is_active_colored(self, obj):
