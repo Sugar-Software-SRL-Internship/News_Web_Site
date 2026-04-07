@@ -62,19 +62,18 @@ MIDDLEWARE = [
 ]
 ROOT_URLCONF = 'config.urls'
 LOGIN_REDIRECT_URL = '/admin/'
-CKEDITOR_UPLOAD_PATH = "uploads/"
-CKEDITOR_IMAGE_BACKEND = "pillow"
+
 # --- UNFOLD НАСТРОЙКИ ---
 UNFOLD = {
     "SITE_TITLE": "News Project Admin",
     "SITE_HEADER": "Project Management",
     "SITE_URL": "/",
 
-"STYLES": [
-        lambda request: "https://cdn.tailwindcss.com", # Подгрузит tailwind если локальный не подцепился
+    "STYLES": [
+        "https://cdn.tailwindcss.com",  # Просто строка без lambda
     ],
     "SCRIPTS": [
-        lambda request: "https://unpkg.com/@phosphor-icons/web", # Иконки для кнопок/инпутов
+        "https://unpkg.com/@phosphor-icons/web",  # Просто строка без lambda
     ],
     "COLORS": {
         "primary": {
@@ -173,6 +172,46 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'backend' / 'media'
 CORS_ALLOW_ALL_ORIGINS = True
-
+STATICFILES_DIRS = [
+    BASE_DIR / 'assets',
+]
+STATIC_ROOT = BASE_DIR / 'static'
 CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
 CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
+CKEDITOR_EXTERNAL_PLUGINS = [
+    ('youtube', os.path.join(STATIC_URL, 'ckeditor/ckeditor/plugins/youtube/plugin.js')),
+]
+
+# 2. Настраиваем сам редактор
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'skin': 'moono-lisa',
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['Image', 'Youtube', 'Table', 'HorizontalRule', 'SpecialChar'], # Youtube тут!
+            ['Format', 'Font', 'FontSize'],
+            ['TextColor', 'BGColor'],
+            ['Maximize', 'Source'],
+        ],
+        'height': 450,
+        'width': '100%',
+        'tabSpaces': 4,
+        'extraPlugins': ','.join([
+            'uploadimage',
+            'div',
+            'autolink',
+            'youtube',
+            'widget',
+            'lineutils',
+            'clipboard',
+            'dialog',
+            'dialogui',
+        ]),
+    },
+}

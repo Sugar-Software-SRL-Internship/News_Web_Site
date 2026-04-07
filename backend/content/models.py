@@ -6,6 +6,9 @@ from django.utils import timezone
 from users.models import User
 # Create your models here.
 
+
+
+
 class Category(models.Model):
     name =models.CharField(max_length=100, primary_key=True)
 
@@ -66,6 +69,17 @@ class MultiMedia(models.Model):
 class News(models.Model):
    content = models.OneToOneField(Content,on_delete=models.CASCADE,related_name='news')
    headline = models.CharField(max_length=250)
+   body = RichTextUploadingField(
+       config_name='default',
+       extra_plugins=['youtube', 'uploadimage'],
+       external_plugin_resources=[(
+           'youtube',
+           '/static/ckeditor/ckeditor/plugins/youtube/',
+           'plugin.js',
+       )],
+       blank=True,
+       null=True
+   )
    thumbnail =models.ForeignKey(MultiMedia,on_delete=models.CASCADE,related_name='news_thumbnail',null=True,blank=True)
    fixed_until = models.DateTimeField(null=True, blank=True)
    is_breaking = models.BooleanField(default=False)
@@ -79,3 +93,18 @@ class News(models.Model):
 
    def __str__(self):
         return self.headline
+
+#new models
+#
+#
+# class Guest(models.Model):
+#     name = models.CharField(max_length=255)
+#     photo = models.ForeignKey(MultiMedia, on_delete=models.SET_NULL, null=True, blank=True)
+#
+#     def __str__(self):
+#         return self.name
+#
+# class Show(models.Model):
+#     content = models.OneToOneField(Content, on_delete=models.CASCADE, related_name='shows')
+#     thumbnail = models.ForeignKey(MultiMedia, on_delete=models.SET_NULL, null=True, blank=True)
+#     description = models.(null=True, blank=True)

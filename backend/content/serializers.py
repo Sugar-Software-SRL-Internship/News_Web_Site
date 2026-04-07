@@ -37,14 +37,14 @@ class NewsReadSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = News
-        fields = ['content', 'headline', 'thumbnail', 'fixed_until', 'is_breaking', 'parent', 'updates']
+        fields = ['content', 'headline', 'thumbnail', 'fixed_until', 'is_breaking', 'parent', 'updates','body']
 
 class NewsWriteSerializer(serializers.ModelSerializer):
     content = ContentWriteSerializer()
 
     class Meta:
         model = News
-        fields = ['content', 'headline', 'thumbnail', 'fixed_until', 'is_breaking', 'parent']
+        fields = ['content', 'headline', 'thumbnail', 'fixed_until', 'is_breaking', 'parent','body']
 
     def create(self, validated_data):
         with transaction.atomic():

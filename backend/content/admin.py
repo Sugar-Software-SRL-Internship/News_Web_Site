@@ -3,6 +3,7 @@ from django.db.models import ForeignKey
 from django.forms import ModelChoiceField
 from django.http import HttpRequest
 from django.urls import reverse
+from django.utils.safestring import mark_safe
 
 from .models import  *
 from unfold.admin import ModelAdmin,StackedInline
@@ -69,7 +70,7 @@ class NewsAdmin(ModelAdmin):
                 '<img src="{}" style="width: 44px; height: 44px; border-radius: 6px; object-fit: cover;" />',
                 obj.thumbnail.file.url
             )
-        return format_html('<span style="color: #9ca3af;">No Image</span>')
+        return mark_safe('<span style="color: #9ca3af;">No Image</span>')
 
     @display(description="Parent News")
     def parent_link(self, obj):
