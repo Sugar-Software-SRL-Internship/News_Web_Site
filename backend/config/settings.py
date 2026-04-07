@@ -29,14 +29,16 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     'invitations',
-'django.contrib.sites',
-
+    'django.contrib.sites',
+    'ckeditor',
+    'ckeditor_uploader',
 
     'rest_framework',
     'drf_spectacular',
     'corsheaders',
 
     'users',
+    'content',
 ]
 SITE_ID = 1
 ACCOUNT_EMAIL_REQUIRED = True
@@ -60,7 +62,8 @@ MIDDLEWARE = [
 ]
 ROOT_URLCONF = 'config.urls'
 LOGIN_REDIRECT_URL = '/admin/'
-
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
 # --- UNFOLD НАСТРОЙКИ ---
 UNFOLD = {
     "SITE_TITLE": "News Project Admin",

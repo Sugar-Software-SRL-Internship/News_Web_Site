@@ -1,7 +1,9 @@
 from django.db import models
 from django.db.models.fields import CharField
+from ckeditor_uploader.fields import RichTextUploadingField
+from django.utils import timezone
 
-from backend.users.models import User
+from users.models import User
 # Create your models here.
 
 class Category(models.Model):
@@ -10,7 +12,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-class Tags(models.Model):
+class Tag(models.Model):
     name =models.CharField(max_length=100, primary_key=True)
 
     def __str__(self):
@@ -36,8 +38,13 @@ class Content(models.Model):
     title = models.CharField(max_length=100)
     content_type = models.IntegerField(choices=ContentType.choices,default=ContentType.NEWS)
     status = models.IntegerField(choices=Status.choices,default=Status.DRAFT)
-    owner = models.ForeignKey(User,on_delete=models.CASCADE)
-    publish_date = models.DateTimeField()
+    owner = models.ForeignKey(User,on_delete=models.CASCADE,related_name='content')
+    views = models.PositiveIntegerField(default=0)
+    publish_date = models.DateTimeField(null=True, blank=True)
+    tags=models.ManyToManyField(Tag,blank=True,null=True)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='content',blank=True,null=True)
+    def __str__(self):
+        return self.title
 
 
 
@@ -50,12 +57,23 @@ class MultiMedia(models.Model):
 
     title = CharField(max_length=100,null=True)
     media_type = models.IntegerField(choices=TypeMedia.choices,default=TypeMedia.TEXT)
-    content = models.ForeignKey(Content,on_delete=models.CASCADE)
     file = models.FileField(upload_to='content/%Y/%m/%d/')
 
 
 
-class News(Content):
+class News(models.Model):
+   content = models.OneToOneField(Content,on_delete=models.CASCADE,related_name='news')
    headline = models.CharField(max_length=250)
-   category = models.ForeignKey(Category,on_delete=models.CASCADE)
-   tags = models.ManyToManyField(Tags)
+   thumbnail =models.ForeignKey(MultiMedia,on_delete=models.CASCADE,related_name='news_thumbnail',null=True,blank=True)
+   fixed_until = models.DateTimeField(null=True, blank=True)
+   is_breaking = models.BooleanField(default=False)
+   parent = models.ForeignKey('self',on_delete=models.CASCADE,related_name='updates',null=True,blank=True)
+
+   @property
+   def is_fixed(self):
+       if self.fixed_until:
+           return self.fixed_until > timezone.now()
+       return False
+
+   def __str__(self):
+        return self.headline
