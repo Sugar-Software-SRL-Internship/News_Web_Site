@@ -17,6 +17,31 @@ class NewsInline(StackedInline):
     extra = 0
     tab = True
 
+class ShowInline(StackedInline):
+    model = Show
+    fk_name = 'content'
+    extra = 0
+    tab = True
+
+class PromosInline(StackedInline):
+    model = Promo
+    fk_name = 'content'
+    extra = 0
+    tab = True
+
+class SerieInline(StackedInline):
+    model=Serie
+    fk_name = 'show'
+    tab = True
+    extra = 0
+
+class PromoInline(StackedInline):
+    model=Promo
+    fk_name = 'related_content'
+    tab = True
+
+
+
 
 @admin.register(Category)
 class CategoryAdmin(ModelAdmin):
@@ -31,7 +56,7 @@ class ContentAdmin(ModelAdmin):
     list_display = ["title", "content_type", "status", "owner", "publish_date",'views']
     list_filter = ["content_type", "status", "category"]
     search_fields = ["title"]
-    inlines = [NewsInline]
+    inlines = [NewsInline,ShowInline,PromosInline]
 
 @admin.register(MultiMedia)
 class MultiMediaAdmin(ModelAdmin):
@@ -81,4 +106,60 @@ class NewsAdmin(ModelAdmin):
                 url,
                 obj.parent.headline
             )
+        return "—"
+
+
+@admin.register(Guest)
+class GuestAdmin(ModelAdmin):
+    list_display = ("name", "photo_preview")
+
+
+    @display(description="Image")
+    def photo_preview(self, obj):
+        if obj.photo and obj.photo.file:
+            return mark_safe(
+                f'<img src="{obj.photo.file.url}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" />')
+        return "—"
+
+
+
+
+@admin.register(Show)
+class ShowAdmin(ModelAdmin):
+    list_display = ["get_title", "get_status", "count_series"]
+    inlines = [SerieInline,PromoInline]
+
+    @display(description="Title")
+    def get_title(self, obj):
+        return obj.content.title
+
+    @display(description="Status", label=True)
+    def get_status(self, obj):
+        return obj.content.get_status_display()
+
+    @display(description="Series Count")
+    def count_series(self, obj):
+        return obj.series.count()
+
+
+@admin.register(Serie)
+class SerieAdmin(ModelAdmin):
+    list_display = ['get_title_show','title','published_date']
+    list_filter = ("show", "published_date")
+    search_fields = ("title", "show__content__title")
+    filter_horizontal = ("guests",)
+
+    @display(description="Title_Show")
+    def get_title_show(self, obj):
+        return obj.show.content.title
+
+
+@admin.register(Promo)
+class PromoAdmin(ModelAdmin):
+    list_display = ('title',"get_related_show")
+
+    @display(description="Show")
+    def get_related_show(self, obj):
+        if obj.related_content:
+            return obj.related_content.content.title
         return "—"

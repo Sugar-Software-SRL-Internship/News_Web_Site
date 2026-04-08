@@ -1,16 +1,16 @@
 from rest_framework import serializers
-from .models import Content, News, Category, Tag, MultiMedia
+from .models import Content, News, Category, Tag, MultiMedia, Guest, Promo, Show
 from django.db import transaction
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['name']
+        fields = ['id','name']
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = ['name']
+        fields = ['id','name']
 
 class ContentReadSerializer(serializers.ModelSerializer):
     category = CategorySerializer(read_only=True)
@@ -18,7 +18,7 @@ class ContentReadSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Content
-        fields = ['title', 'content_type', 'status', 'views', 'publish_date', 'category', 'tags']
+        fields = ['id','title', 'content_type', 'status', 'views', 'publish_date', 'category', 'tags']
 
 class ContentWriteSerializer(serializers.ModelSerializer):
     class Meta:
@@ -37,7 +37,7 @@ class NewsReadSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = News
-        fields = ['content', 'headline', 'thumbnail', 'fixed_until', 'is_breaking', 'parent', 'updates','body']
+        fields = ['id','content', 'headline', 'thumbnail', 'fixed_until', 'is_breaking', 'parent', 'updates','body']
 
 class NewsWriteSerializer(serializers.ModelSerializer):
     content = ContentWriteSerializer()
@@ -79,3 +79,52 @@ class NewsWriteSerializer(serializers.ModelSerializer):
                     content_instance.tags.set(tags_data)
 
             return instance
+
+
+
+class GuestSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Guest
+        fields = '__all__'
+
+
+class ShowReadSerializer(serializers.ModelSerializer):
+    content = ContentReadSerializer(read_only=True)
+    thumbnail = MultiMediaSerializer(read_only=True)
+
+    class Meta:
+        model = Show
+        fields = ['id','content','description','thumbnail']
+
+
+class ShowWriteSerializer(serializers.ModelSerializer):
+    content = ContentWriteSerializer()
+    thumbnail = serializers.PrimaryKeyRelatedField(queryset=MultiMedia.objects.all(),required=False,allow_null=True)
+
+    class Meta:
+        model = Show
+        fields = ['content','description','thumbnail']
+
+    def create(self, validated_data):
+        content = validated_data.pop('content')
+        with transaction.atomic():
+            content_instance = Content.objects.create(**content)
+            show = Show.objects.create(content=content_instance, **validated_data)
+            return show
+
+class SeriesReadSerializer(serializers.ModelSerializer):
+    show = ShowReadSerializer(read_only=True)
+
+
+
+
+
+
+class PromoReadSerializer(serializers.ModelSerializer):
+    content = ContentReadSerializer(read_only=True)
+    show = ShowReadSerializer(read_only=True)
+
+    class Meta:
+        model = Promo
+        fields = ['show','title','content',]

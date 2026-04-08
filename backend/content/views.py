@@ -46,3 +46,12 @@ class NewsViewSet(viewsets.ModelViewSet):
         return response.Response(serializer.data)
 
 
+class ShowViewSet(viewsets.ModelViewSet):
+    queryset = Show.objects.all()
+
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return ShowReadSerializer
+        elif self.action == 'create' or self.action == 'update' or self.action == 'partial_update':
+            return ShowWriteSerializer
+

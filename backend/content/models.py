@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.fields import CharField
 from ckeditor_uploader.fields import RichTextUploadingField
+from ckeditor.fields import RichTextField
 from django.utils import timezone
 
 from users.models import User
@@ -95,16 +96,42 @@ class News(models.Model):
         return self.headline
 
 #new models
-#
-#
-# class Guest(models.Model):
-#     name = models.CharField(max_length=255)
-#     photo = models.ForeignKey(MultiMedia, on_delete=models.SET_NULL, null=True, blank=True)
-#
-#     def __str__(self):
-#         return self.name
-#
-# class Show(models.Model):
-#     content = models.OneToOneField(Content, on_delete=models.CASCADE, related_name='shows')
-#     thumbnail = models.ForeignKey(MultiMedia, on_delete=models.SET_NULL, null=True, blank=True)
-#     description = models.(null=True, blank=True)
+
+
+class Guest(models.Model):
+    name = models.CharField(max_length=255)
+    photo = models.ForeignKey(MultiMedia, on_delete=models.SET_NULL, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+class Show(models.Model):
+    content = models.OneToOneField(Content, on_delete=models.CASCADE, related_name='shows')
+    thumbnail = models.ForeignKey(MultiMedia, on_delete=models.SET_NULL, null=True, blank=True)
+    description = RichTextField(null=True, blank=True)
+
+    def __str__(self):
+        return self.content.title
+
+
+class Serie(models.Model):
+    title = models.CharField(max_length=150)
+    show = models.ForeignKey(Show,on_delete=models.CASCADE,related_name='series')
+    media = models.ForeignKey(MultiMedia, on_delete=models.SET_NULL,null=True, blank=True)
+    guests = models.ManyToManyField(Guest, blank=True, related_name='series')
+    description = RichTextField(null=True, blank=True)
+    published_date = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.show.content.title} | {self.title}"
+
+class Promo(models.Model):
+    title =models.CharField(max_length=100,null=True,blank=True)
+    content = models.OneToOneField(Content, on_delete=models.SET_NULL, related_name='promos',blank=True,null=True)
+    video = models.ForeignKey(MultiMedia, on_delete=models.SET_NULL,null=True, blank=True)
+    related_content = models.ForeignKey(Show,on_delete=models.SET_NULL,null=True, blank=True,related_name='promo')
+
+    def __str__(self):
+        return f"Promo #{self.id}"
+
+
