@@ -84,21 +84,39 @@ UNFOLD = {
         },
     },
     "SIDEBAR": {
-        "show_search": True,
-        "show_all_applications": True,
-        "navigation": [
-            {
-                "title": _("User Management"),
-                "items": [
-                    {
-                        "title": _("Users"),
-                        "icon": "people",
-                        "link": reverse_lazy("admin:users_user_changelist"),
-                    },
-                ],
-            },
-        ],
-    },
+    "show_search": True,
+    "show_all_applications": False, # Скроем лишний стандартный мусор Django
+    "navigation": [
+        {
+            "title": _("User Management"),
+            "items": [
+                {
+                    "title": _("Users"),
+                    "icon": "people",
+                    "link": reverse_lazy("admin:users_user_changelist"),
+                },
+            ],
+        },
+        {
+            "title": _("Media Archive"),
+            "items": [
+                {
+                    "title": _("Media Library"),
+                    "link": reverse_lazy("admin:content_multimedia_changelist"), # Сделали динамической
+                    "icon": "perm_media"
+                },
+            ],
+        },
+        {
+            "title": _("Content Management"),
+            "items": [
+                {"title": _("News"), "link": reverse_lazy("admin:content_news_changelist"), "icon": "article"},
+                {"title": _("Shows"), "link": reverse_lazy("admin:content_show_changelist"), "icon": "live_tv"},
+                {"title": _("Promos"), "link": reverse_lazy("admin:content_promo_changelist"), "icon": "campaign"},
+            ],
+        },
+    ],
+},
 }
 
 

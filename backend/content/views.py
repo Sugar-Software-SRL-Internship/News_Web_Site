@@ -55,3 +55,11 @@ class ShowViewSet(viewsets.ModelViewSet):
         elif self.action == 'create' or self.action == 'update' or self.action == 'partial_update':
             return ShowWriteSerializer
 
+class SeriesViewSet(viewsets.ModelViewSet):
+    queryset =Serie.objects.select_related('show__content','media').prefetch_related('guests')
+
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return SeriesReadSerializer
+        elif self.action == 'create' or self.action == 'update' or self.action == 'partial_update':
+            return SeriesWriteSerializer

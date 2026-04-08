@@ -60,14 +60,26 @@ class ContentAdmin(ModelAdmin):
 
 @admin.register(MultiMedia)
 class MultiMediaAdmin(ModelAdmin):
-    list_display = ['title','media_type','file_preview']
+    list_display = ['title','media_type','display_preview']
     list_filter = ['media_type']
     search_fields = ['title']
+    list_per_page = 20
 
-    def file_preview(self, obj):
-        if obj.media_type == 2 and obj.file:
-            return format_html('<img src="{}" style="width: 50px; height: 50px; border-radius: 4px;" />', obj.file.url)
-        return  "Video"
+    def display_preview(self, obj):
+        if obj.media_type == 2:  # IMAGE
+
+            return format_html(
+                '<img src="{}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;" />',
+                obj.file.url
+            )
+        elif obj.media_type == 3:  # VIDEO
+
+            return mark_safe(
+                '<div style="width: 80px; height: 80px; background: #000; color: #fff; '
+                'display: flex; align-items: center; justify-content: center; '
+                'border-radius: 8px; font-size: 10px;">VIDEO</div>'
+            )
+        return "📄 Text"
 
 
 

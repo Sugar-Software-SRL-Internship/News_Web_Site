@@ -1,16 +1,16 @@
 from rest_framework import serializers
-from .models import Content, News, Category, Tag, MultiMedia, Guest, Promo, Show
+from .models import Content, News, Category, Tag, MultiMedia, Guest, Promo, Show,Serie
 from django.db import transaction
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['id','name']
+        fields = ['name']
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = ['id','name']
+        fields = ['name']
 
 class ContentReadSerializer(serializers.ModelSerializer):
     category = CategorySerializer(read_only=True)
@@ -115,16 +115,50 @@ class ShowWriteSerializer(serializers.ModelSerializer):
 
 class SeriesReadSerializer(serializers.ModelSerializer):
     show = ShowReadSerializer(read_only=True)
+    media = MultiMediaSerializer(read_only=True)
+    guests = GuestSerializer(many=True, read_only=True)
 
+    class Meta:
+        model=Serie
+        fields = ['id','title','show','media','guests','description','published_date',]
+
+class SeriesWriteSerializer(serializers.ModelSerializer):
+    media = serializers.PrimaryKeyRelatedField(queryset=MultiMedia.objects.all(),required=False,allow_null=True)
+    guests = serializers.PrimaryKeyRelatedField(queryset=Guest.objects.all(),required=False,allow_null=True,many=True)
+    show = serializers.PrimaryKeyRelatedField(queryset=Show.objects.all(),required=False,allow_null=True)
+
+    class Meta:
+        model=Serie
+        fields = ['title', 'show', 'media', 'guests', 'description', 'published_date']
 
 
 
 
 
 class PromoReadSerializer(serializers.ModelSerializer):
-    content = ContentReadSerializer(read_only=True)
-    show = ShowReadSerializer(read_only=True)
+    content_details = ContentReadSerializer(source='content', read_only=True)
+    video = MultiMediaSerializer(read_only=True)
+
+    related_show_title = serializers.CharField(source='related_content.content.title', read_only=True)
 
     class Meta:
         model = Promo
-        fields = ['show','title','content',]
+        fields = [
+            'id',
+            'title',
+            'content_details',
+            'video',
+            'related_content',
+            'related_show_title'
+        ]
+
+#
+# class PromoWriteSerializer(serializers.ModelSerializer):
+#     show = serializers.PrimaryKeyRelatedField(queryset=Show.objects.all(),required=False,allow_null=True)
+#     media = serializers.PrimaryKeyRelatedField(queryset=MultiMedia.objects.all(),required=False,allow_null=True)
+#     id_content = serializers.PrimaryKeyRelatedField(queryset=Content.objects.all(),required=False,allow_null=True)
+#     new_content = ContentWriteSerializer(allow_null=True,required=False)
+#
+#     class Meta:
+#         model = Promo
+#         fields = []
