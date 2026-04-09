@@ -113,6 +113,7 @@ UNFOLD = {
                 {"title": _("News"), "link": reverse_lazy("admin:content_news_changelist"), "icon": "article"},
                 {"title": _("Shows"), "link": reverse_lazy("admin:content_show_changelist"), "icon": "live_tv"},
                 {"title": _("Promos"), "link": reverse_lazy("admin:content_promo_changelist"), "icon": "campaign"},
+{"title": _("Shorts"), "link": reverse_lazy("admin:content_short_changelist"), "icon": "video_library"},
             ],
         },
     ],

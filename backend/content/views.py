@@ -73,3 +73,16 @@ class PromosViewSet(viewsets.ModelViewSet):
             return PromoReadSerializer
         elif self.action == 'create' or self.action == 'update' or self.action == 'partial_update':
             return PromoWriteSerializer
+
+class ShortsViewSet(viewsets.ModelViewSet):
+    queryset = Short.objects.all()
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return ShortReadSerializer
+        elif self.action == 'create' or self.action == 'update' or self.action == 'partial_update':
+            return ShortWriteSerializer
+
+
+class MultiMediaViewSet(viewsets.ModelViewSet):
+    queryset = MultiMedia.objects.all()
+    serializer_class= MultiMediaSerializer

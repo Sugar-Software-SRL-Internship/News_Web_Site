@@ -132,6 +132,17 @@ class Promo(models.Model):
         return f"Promo #{self.id}"
 
 
+#new models
 
 
 
+class Short(models.Model):
+    content = models.OneToOneField(Content, on_delete=models.CASCADE, related_name='shorts')
+    headline = models.CharField(max_length=255, blank=True)
+    video =  models.ForeignKey(
+        MultiMedia,
+        on_delete=models.CASCADE,
+        related_name='short_video'
+    )
+    def __str__(self):
+        return  f"Short {self.content.title}"
