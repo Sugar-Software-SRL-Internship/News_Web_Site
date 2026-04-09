@@ -12,8 +12,16 @@ load_dotenv(BASE_DIR / '.env')
 SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-if-not-found')
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 ALLOWED_HOSTS = []
-
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRES_DB'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('POSTGRES_HOST', 'db'),
+        'PORT': os.getenv('POSTGRES_PORT', '5432'),
+    }
+}
 INSTALLED_APPS = [
     'unfold',
     'unfold.contrib.filters',
@@ -195,8 +203,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'assets',
 ]
 STATIC_ROOT = BASE_DIR / 'static'
-CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
-CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
+CELERY_BROKER_URL = os.getenv('REDIS_URL')
+CELERY_RESULT_BACKEND = os.getenv('REDIS_URL')
 CKEDITOR_EXTERNAL_PLUGINS = [
     ('youtube', os.path.join(STATIC_URL, 'ckeditor/ckeditor/plugins/youtube/plugin.js')),
 ]

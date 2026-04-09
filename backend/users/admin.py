@@ -31,8 +31,12 @@ class UserAdmin(ModelAdmin):
 
     def invite_status_display(self, obj):
 
-        try:
-            invite = Invitation.objects.get(email=obj.email)
-            return "Accepted" if invite.accepted else "Pending"
-        except Invitation.DoesNotExist:
+        invite = Invitation.objects.filter(email=obj.email).last()
+
+        if not invite:
             return "Not sent"
+        if obj.is_active and invite.accepted:
+            return "Accepted"
+
+        return "Pending"
+    invite_status_display.short_description = 'Invite Status'
