@@ -63,3 +63,13 @@ class SeriesViewSet(viewsets.ModelViewSet):
             return SeriesReadSerializer
         elif self.action == 'create' or self.action == 'update' or self.action == 'partial_update':
             return SeriesWriteSerializer
+
+
+class PromosViewSet(viewsets.ModelViewSet):
+    queryset = Promo.objects.all()
+
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return PromoReadSerializer
+        elif self.action == 'create' or self.action == 'update' or self.action == 'partial_update':
+            return PromoWriteSerializer

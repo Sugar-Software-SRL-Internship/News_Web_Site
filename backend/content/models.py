@@ -7,9 +7,6 @@ from django.utils import timezone
 from users.models import User
 # Create your models here.
 
-
-
-
 class Category(models.Model):
     name =models.CharField(max_length=100, primary_key=True)
 
@@ -133,5 +130,8 @@ class Promo(models.Model):
 
     def __str__(self):
         return f"Promo #{self.id}"
+
+
+
 
 
