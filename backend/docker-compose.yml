@@ -23,8 +23,6 @@ services:
     build: .
     container_name: news_web_container
     command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/app
     env_file:
       - .env
     depends_on:
@@ -40,8 +38,6 @@ services:
     build: .
     container_name: news_worker_container
     command: celery -A config worker --loglevel=info
-    volumes:
-      - .:/app
     env_file:
       - .env
     depends_on:
