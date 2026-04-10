@@ -13,6 +13,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-if-not-found')
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 raw_hosts = os.getenv('ALLOWED_HOSTS', 'localhost')
 ALLOWED_HOSTS = ['*']
+raw_csrf_origins = os.getenv('CSRF_TRUSTED_ORIGINS', 'https://localhost')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -174,7 +175,7 @@ EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # --- AUTH ---
 AUTH_USER_MODEL = 'users.User'
 WSGI_APPLICATION = 'config.wsgi.application'
