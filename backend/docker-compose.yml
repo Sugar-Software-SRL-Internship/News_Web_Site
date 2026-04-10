@@ -39,7 +39,6 @@ services:
   worker:
     build: .
     container_name: news_worker_container
-    entrypoint: []
     command: celery -A config worker --loglevel=info
     volumes:
       - .:/app
