@@ -11,7 +11,8 @@ load_dotenv(BASE_DIR / '.env')
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-if-not-found')
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
+raw_hosts = os.getenv('ALLOWED_HOSTS', 'localhost')
+ALLOWED_HOSTS = [host.strip().strip("'").strip('"') for host in raw_hosts.split(',')]
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
