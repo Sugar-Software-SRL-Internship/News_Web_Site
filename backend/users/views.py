@@ -10,6 +10,8 @@ from users.models import *
 def accept_invite(request, key):
 
     invitation = get_object_or_404(Invitation, key=key)
+    invitation.is_used = True
+    invitation.save()
     user = User.objects.get(email=invitation.email)
 
     if request.method == "POST":

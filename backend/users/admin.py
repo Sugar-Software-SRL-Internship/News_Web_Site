@@ -35,7 +35,7 @@ class UserAdmin(ModelAdmin):
 
         if not invite:
             return "Not sent"
-        if obj.is_active and invite.accepted:
+        if obj.is_active and invite.is_used:
             return "Accepted"
 
         return "Pending"
