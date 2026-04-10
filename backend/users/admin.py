@@ -3,11 +3,11 @@ from django.contrib import admin                # <- обязательно!
 from unfold.admin import ModelAdmin
 from django.contrib.auth import get_user_model
 from .utils import create_invitation
+from .models import Invitation
 import uuid
 from invitations.utils import get_invitation_model
 
 User = get_user_model()
-Invitation = get_invitation_model()
 
 
 @admin.register(User)
@@ -35,8 +35,7 @@ class UserAdmin(ModelAdmin):
 
         if not invite:
             return "Not sent"
-        if obj.is_active and invite.is_used:
+        if invite.is_used and obj.is_active:
             return "Accepted"
-
         return "Pending"
     invite_status_display.short_description = 'Invite Status'
