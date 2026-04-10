@@ -13,7 +13,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-if-not-found')
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 raw_hosts = os.getenv('ALLOWED_HOSTS', 'localhost')
 ALLOWED_HOSTS = ['*']
-raw_csrf_origins = os.getenv('CSRF_TRUSTED_ORIGINS', 'https://localhost')
+CSRF_TRUSTED_ORIGINS=[os.getenv('CSRF_TRUSTED_ORIGINS', 'https://localhost')]
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
