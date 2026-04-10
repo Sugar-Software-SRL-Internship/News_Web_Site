@@ -18,7 +18,7 @@ def accept_invite(request, key):
             user.set_password(form.cleaned_data["password1"])
             user.is_active = True
             user.is_staff = True
-            user.invite_status = User.InviteStatus.ACCEPTED
+            user.invite_status = 2
             user.save()
             return redirect("/admin/login/")
     else:
