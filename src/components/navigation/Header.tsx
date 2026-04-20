@@ -2,7 +2,6 @@ import { Logo } from './Logo'
 import { NavBar } from './NavBar'
 import { AuthButtons } from './AuthButtons'
 import { HamburgerMenu } from './HamburgerMenu'
-import { ThemeToggle } from '@/components/ThemeToggle'
 
 export function Header() {
   return (
@@ -19,7 +18,6 @@ export function Header() {
             </div>
 
             <div className="flex items-center gap-2">
-              <ThemeToggle />
               <AuthButtons />
             </div>
           </div>

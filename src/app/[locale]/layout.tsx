@@ -2,6 +2,7 @@ import { Geist } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { Header } from '@/components/navigation/Header'
+import { Footer } from '@/components/layout/Footer'
 import '../globals.css'
 
 const geist = Geist({
@@ -23,6 +24,7 @@ export default async function LocaleLayout({
       <div lang={locale} className={geist.className}>
         <Header />
         <main>{children}</main>
+        <Footer />
       </div>
     </NextIntlClientProvider>
   )

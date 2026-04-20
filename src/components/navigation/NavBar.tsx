@@ -20,7 +20,7 @@ export function NavBar() {
   const activeItem = navItems.find((item) => item.href === activeSubmenu)
 
   return (
-    <div>
+    <div className="hidden md:block">
       <nav className="flex items-center border-t border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center overflow-x-auto scrollbar-hide">
@@ -38,7 +38,7 @@ export function NavBar() {
                     text-gray-800 dark:text-gray-200 shrink-0
                     ${
                       isActive
-                        ? 'after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#000000]'
+                        ? 'after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#bb1919]'
                         : ''
                     }
                   `}
