@@ -1,0 +1,88 @@
+from django.shortcuts import render
+from rest_framework import viewsets, response
+from .serializers import *
+from .tasks import increment_view_count
+
+
+# Create your views here.
+
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+class TagViewSet(viewsets.ModelViewSet):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+
+
+class ContentViewSet(viewsets.ModelViewSet):
+    queryset = Content.objects.all()
+
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return ContentReadSerializer
+        elif self.action == 'create' or self.action == 'update' or self.action == 'partial_update':
+            return ContentWriteSerializer
+
+
+
+class NewsViewSet(viewsets.ModelViewSet):
+
+    queryset = News.objects.select_related('content', 'thumbnail', 'parent').all()
+
+    def get_serializer_class(self):
+
+        if self.action == 'list' or self.action == 'retrieve':
+            return NewsReadSerializer
+        elif self.action == 'create' or self.action == 'update' or self.action == 'partial_update':
+            return NewsWriteSerializer
+
+    def  retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+
+        increment_view_count.delay(instance.content.id)
+        serializer = self.get_serializer(instance)
+        return response.Response(serializer.data)
+
+
+class ShowViewSet(viewsets.ModelViewSet):
+    queryset = Show.objects.all()
+
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return ShowReadSerializer
+        elif self.action == 'create' or self.action == 'update' or self.action == 'partial_update':
+            return ShowWriteSerializer
+
+class SeriesViewSet(viewsets.ModelViewSet):
+    queryset =Serie.objects.select_related('show__content','media').prefetch_related('guests')
+
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return SeriesReadSerializer
+        elif self.action == 'create' or self.action == 'update' or self.action == 'partial_update':
+            return SeriesWriteSerializer
+
+
+class PromosViewSet(viewsets.ModelViewSet):
+    queryset = Promo.objects.all()
+
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return PromoReadSerializer
+        elif self.action == 'create' or self.action == 'update' or self.action == 'partial_update':
+            return PromoWriteSerializer
+
+class ShortsViewSet(viewsets.ModelViewSet):
+    queryset = Short.objects.all()
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return ShortReadSerializer
+        elif self.action == 'create' or self.action == 'update' or self.action == 'partial_update':
+            return ShortWriteSerializer
+
+
+class MultiMediaViewSet(viewsets.ModelViewSet):
+    queryset = MultiMedia.objects.all()
+    serializer_class= MultiMediaSerializer

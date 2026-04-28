@@ -21,16 +21,16 @@ export function AuthButtons() {
     <>
       <div className="hidden md:flex items-center gap-2">
         <button
-          onClick={openSignIn}
-          className="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-200 hover:underline transition-colors"
-        >
-          Sign in
-        </button>
-        <button
           onClick={openRegister}
-          className="px-3 py-1.5 text-sm font-medium bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-800 rounded hover:opacity-90 transition-opacity"
+          className="px-3 py-1.5 text-sm font-medium bg-gray-900 dark:bg-gray-200 text-white dark:text-gray-800 hover:opacity-90 transition-opacity"
         >
           Register
+        </button>
+        <button
+          onClick={openSignIn}
+          className="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-800 hover:text-white transition-colors"
+        >
+          Sign in
         </button>
       </div>
 

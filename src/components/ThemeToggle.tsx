@@ -14,7 +14,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="theme-btn px-3 py-1.5 rounded-md bg-gray-200 drak:bg-gray-700
+      className="theme-btn px-3 py-1.5 bg-gray-200 drak:bg-gray-700
         text-gray-800 dark:text-gray-200 text-sm transition-colors"
     >
       {theme === 'dark' ? t('light') : t('dark')}

@@ -12,7 +12,7 @@ export function SubMenu({ featured, links }: SubMenuProps) {
         <div className="flex items-center gap-6 overflow-x-auto py-2 scrollbar-hide">
           <Link
             href="#"
-            className="text-sm font-bold text-gray-900 dark:text-gray-100 whitespace-nowrap hover:text-[#bb1919] transition-colors shrink-0"
+            className="text-sm font-bold text-gray-900 dark:text-gray-100 whitespace-nowrap hover:bg-gray-100 transition-colors shrink-0"
           >
             {featured}
           </Link>
@@ -25,7 +25,7 @@ export function SubMenu({ featured, links }: SubMenuProps) {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap hover:text-[#bb1919] dark:hover:text-[#bb1919] transition-colors"
+              className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap hover:bg-gray-100 dark:hover:text-[#bb1919] transition-colors"
             >
               {link.label}
             </Link>

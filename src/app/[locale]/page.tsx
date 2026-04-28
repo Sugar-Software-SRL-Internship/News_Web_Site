@@ -14,7 +14,7 @@ import {
 export default function HomePage() {
   return (
     <Container className="py-6">
-      {/* Section 1 — Hero Grid */}
+      {/* Section 1 — Hero */}
       <HeroGrid
         leftArticles={heroArticles.slice(0, 2)}
         centerArticle={heroArticles[2]}
@@ -29,6 +29,7 @@ export default function HomePage() {
 
       {/* Section 4 — More News */}
       <MoreNews
+        bigArticles={moreNewsArticles.slice(0, 1)}
         largeArticles={moreNewsArticles.slice(0, 3)}
         smallArticles={moreNewsArticles.slice(3, 6)}
         sideArticles={moreNewsArticles.slice(6, 9)}

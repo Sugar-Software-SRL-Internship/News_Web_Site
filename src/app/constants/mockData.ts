@@ -4,7 +4,7 @@ export interface Article {
   description: string
   imageUrl: string
   source: string
-  publishedAt: Date //publishedAt: new Date(article.created_at) data din backend
+  publishedAt: Date // de inlocuit cu -> publishedAt: new Date(article.created_at) data din backend
   isBreaking?: boolean
   author?: string
   duration?: string
@@ -45,7 +45,8 @@ export const sideArticles: Article[] = [
   {
     id: '4',
     title: 'Markets fall as inflation data disappoints investors',
-    description: '',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio maiores atque laborum error. Minus, eos perferendis, expedita quaerat odit, excepturi amet aliquid iste velit sint laudantium voluptatem delectus! Commodi, soluta.',
     imageUrl: '',
     source: 'BBC Business',
     publishedAt: new Date(Date.now() - 1000 * 60 * 60 * 10),
@@ -53,7 +54,8 @@ export const sideArticles: Article[] = [
   {
     id: '5',
     title: 'Scientists discover new species deep in the Amazon rainforest',
-    description: '',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio maiores atque laborum error. Minus, eos perferendis, expedita quaerat odit, excepturi amet aliquid iste velit sint laudantium voluptatem delectus! Commodi, soluta.',
     imageUrl: '',
     source: 'BBC Science',
     publishedAt: new Date(Date.now() - 1000 * 60 * 60 * 19),
@@ -61,7 +63,8 @@ export const sideArticles: Article[] = [
   {
     id: '6',
     title: 'Political crisis deepens as parliament votes against new budget',
-    description: '',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio maiores atque laborum error. Minus, eos perferendis, expedita quaerat odit, excepturi amet aliquid iste velit sint laudantium voluptatem delectus! Commodi, soluta.',
     imageUrl: '',
     source: 'BBC News',
     publishedAt: new Date(Date.now() - 1000 * 60 * 60 * 2),
@@ -69,7 +72,8 @@ export const sideArticles: Article[] = [
   {
     id: '7',
     title: 'New study links social media use to rising anxiety in teenagers',
-    description: '',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio maiores atque laborum error. Minus, eos perferendis, expedita quaerat odit, excepturi amet aliquid iste velit sint laudantium voluptatem delectus! Commodi, soluta.',
     imageUrl: '',
     source: 'BBC Health',
     publishedAt: new Date(Date.now() - 1000 * 60 * 60 * 5),
