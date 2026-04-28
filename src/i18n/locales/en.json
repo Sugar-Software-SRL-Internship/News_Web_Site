@@ -1,0 +1,107 @@
+{
+  "navigation": {
+    "home": "Home",
+    "news": "News",
+    "sport": "Sport",
+    "video": "Video",
+    "live": "Live",
+    "shows": "Shows",
+    "search": "Search",
+    "menu": "Menu"
+  },
+  "categories": {
+    "politics": "Politics",
+    "world": "World",
+    "business": "Business",
+    "tech": "Technology",
+    "science": "Science",
+    "health": "Health",
+    "entertainment": "Entertainment",
+    "sport": "Sport"
+  },
+  "home": {
+    "title": "Latest news",
+    "breaking": "Breaking news",
+    "topStories": "Top stories",
+    "mostRead": "Most read",
+    "recommended": "Recommended"
+  },
+  "news": {
+    "title": "News",
+    "latest": "Latest news",
+    "readMore": "Read more",
+    "publishedAt": "Published at",
+    "updatedAt": "Updated at",
+    "author": "Author",
+    "share": "Share",
+    "relatedArticles": "Related articles",
+    "breakingNews": "Breaking news"
+  },
+  "video": {
+    "title": "Video",
+    "watch": "Watch",
+    "duration": "Duration",
+    "views": "Views",
+    "recommended": "Recommended videos",
+    "latest": "Latest videos"
+  },
+  "live": {
+    "title": "Live",
+    "watching": "Watching now",
+    "startedAt": "Started at",
+    "liveUpdate": "Live update"
+  },
+  "shows": {
+    "title": "Shows",
+    "episodes": "Episodes",
+    "season": "Season",
+    "episode": "Episode",
+    "watchNow": "Watch now"
+  },
+  "search": {
+    "placeholder": "Search news...",
+    "results": "Results for",
+    "noResults": "No results found",
+    "searching": "Searching..."
+  },
+  "common": {
+    "readMore": "Read more",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Try again",
+    "back": "Back",
+    "close": "Close",
+    "seeAll": "See all",
+    "share": "Share",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "errors": {
+    "404": "Page not found",
+    "500": "Server error",
+    "notFound": "Content does not exist",
+    "generic": "Something went wrong"
+  },
+  "cookies": {
+    "title": "We use cookies",
+    "description": "We use cookies to improve your experience on our site.",
+    "accept": "Accept all",
+    "reject": "Reject",
+    "settings": "Cookie settings"
+  },
+  "footer": {
+    "about": "About us",
+    "contact": "Contact",
+    "privacy": "Privacy policy",
+    "terms": "Terms and conditions",
+    "cookies": "Cookie policy",
+    "copyright": "All rights reserved"
+  },
+  "theme": {
+    "light": "Light Theme",
+    "dark": "Dark Theme"
+  }
+}
