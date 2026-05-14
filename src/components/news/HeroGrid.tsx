@@ -1,3 +1,5 @@
+import Link from 'next/link'
+import { useLocale } from 'next-intl'
 import Image from 'next/image'
 import { Article } from '@/app/constants/mockData'
 import { TimeAgo } from '@/components/ui/TimeAgo'
@@ -9,18 +11,54 @@ function ArticleWithImage({
   article: Article
   showDescription?: boolean
 }) {
+  const locale = useLocale()
   return (
-    <div className="group cursor-pointer flex flex-col gap-2">
-      <div className="relative w-full aspect-video overflow-hidden">
-        <Image
-          src={article.imageUrl}
-          alt={article.title}
-          fill
-          className="object-cover group-hover:opacity-80 transition-transform duration-300"
-        />
-      </div>
+    <Link
+      href={`/${locale}/news/${article.slug}`}
+      className="group cursor-pointer flex flex-col gap-2"
+    >
+      <div className="group cursor-pointer flex flex-col gap-2">
+        <div className="relative w-full aspect-video overflow-hidden">
+          <Image
+            src={article.imageUrl}
+            alt={article.title}
+            fill
+            className="object-cover group-hover:opacity-80 transition-transform duration-300"
+          />
+        </div>
 
-      <div className="flex flex-col gap-1.5">
+        <div className="flex flex-col gap-1.5">
+          <h3 className="font-bold text-[18px] leading-snug group-hover:underline transition-colors">
+            {article.title}
+          </h3>
+          {showDescription && (
+            <p className="text-[14px] text-gray-500 dark:text-gray-400 line-clamp-2">
+              {article.description}
+            </p>
+          )}
+          <p className="text-xs text-gray-400">
+            {article.source} | <TimeAgo date={article.publishedAt} />
+          </p>
+        </div>
+      </div>
+    </Link>
+  )
+}
+
+function ArticleTextOnly({
+  article,
+  showDescription = true,
+}: {
+  article: Article
+  showDescription?: boolean
+}) {
+  const locale = useLocale()
+  return (
+    <Link
+      href={`/${locale}/news/${article.slug}`}
+      className="group cursor-pointer flex flex-col gap-2"
+    >
+      <div className="group cursor-pointer flex flex-col gap-1 py-3 border-b border-gray-200 dark:border-gray-700 last:border-0">
         <h3 className="font-bold text-[18px] leading-snug group-hover:underline transition-colors">
           {article.title}
         </h3>
@@ -33,31 +71,7 @@ function ArticleWithImage({
           {article.source} | <TimeAgo date={article.publishedAt} />
         </p>
       </div>
-    </div>
-  )
-}
-
-function ArticleTextOnly({
-  article,
-  showDescription = true,
-}: {
-  article: Article
-  showDescription?: boolean
-}) {
-  return (
-    <div className="group cursor-pointer flex flex-col gap-1 py-3 border-b border-gray-200 dark:border-gray-700 last:border-0">
-      <h3 className="font-bold text-[18px] leading-snug group-hover:underline transition-colors">
-        {article.title}
-      </h3>
-      {showDescription && (
-        <p className="text-[14px] text-gray-500 dark:text-gray-400 line-clamp-2">
-          {article.description}
-        </p>
-      )}
-      <p className="text-xs text-gray-400">
-        {article.source} | <TimeAgo date={article.publishedAt} />
-      </p>
-    </div>
+    </Link>
   )
 }
 
