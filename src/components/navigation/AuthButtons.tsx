@@ -1,24 +1,25 @@
 'use client'
 import Link from 'next/link'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 
 export function AuthButtons() {
   const locale = useLocale()
+  const t = useTranslations('navigation')
 
   return (
     <div className="flex items-center gap-2">
       <div className="hidden md:flex items-center gap-2">
         <Link
           href={`/${locale}/register`}
-          className="px-3 py-1.5 text-sm font-medium bg-gray-900 text-white hover:opacity-90 transition-colors"
+          className="px-3 py-1.5 text-sm font-medium bg-gray-900 text-white hover:opacity-90 transition-colors dark:bg-white dark:text-[#101727]"
         >
-          Register
+          {t('register')}
         </Link>
         <Link
           href={`/${locale}/login`}
           className="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-200 hover:underline transition-colors"
         >
-          Sign In
+          {t('signIn')}
         </Link>
       </div>
       {/* responsive */}

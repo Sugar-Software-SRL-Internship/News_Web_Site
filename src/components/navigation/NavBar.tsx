@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { SubMenu } from './SubMenu'
@@ -10,6 +10,7 @@ export function NavBar() {
   const locale = useLocale()
   const pathname = usePathname()
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
+  const t = useTranslations('navigation')
 
   const handleNavClick = (href: string) => {
     if (activeSubmenu === href) {
@@ -46,7 +47,7 @@ export function NavBar() {
         }
       `}
                 >
-                  {item.label}
+                  {t(item.key)}
                 </Link>
               )
             })}

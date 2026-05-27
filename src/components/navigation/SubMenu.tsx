@@ -1,13 +1,16 @@
 'use client'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
+import { NavLink } from '@/constants/navigation'
 
 interface SubMenuProps {
   featured: string
-  links: { label: string; href: string }[]
+  links: NavLink[]
 }
 
 export function SubMenu({ links }: SubMenuProps) {
   const router = useRouter()
+  const t = useTranslations('submenu')
 
   return (
     <div className="border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
@@ -21,7 +24,7 @@ export function SubMenu({ links }: SubMenuProps) {
                 transition-colors hover:bg-gray-100 dark:hover:bg-gray-800
                 text-gray-600 dark:text-gray-400 shrink-0"
             >
-              {link.label}
+              {link.key ? t(link.key) : link.label}
             </button>
           ))}
         </div>

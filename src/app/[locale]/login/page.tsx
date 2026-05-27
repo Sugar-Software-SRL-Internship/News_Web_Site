@@ -1,10 +1,12 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const t = useTranslations('auth')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -20,17 +22,17 @@ export default function LoginPage() {
           {/* Card */}
           <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-8 shadow-sm">
             <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-              Sign in
+              {t('signIn')}
             </h1>
             <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
-              Intră în contul tău pentru a continua
+              {t('info')}
             </p>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               {/* email */}
               <div className="flex flex-col gap-1.5">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Email
+                  {t('email')}
                 </label>
                 <input
                   type="email"
@@ -50,13 +52,13 @@ export default function LoginPage() {
               <div className="flex flex-col gap-1.5">
                 <div className="flex items-center justify-between">
                   <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Parolă
+                    {t('password')}
                   </label>
                   <Link
                     href="/forgot-password"
                     className="text-xs text-[#024999] hover:underline"
                   >
-                    Ai uitat parola?
+                    {t('forgotPassword')}
                   </Link>
                 </div>
                 <input
@@ -79,25 +81,25 @@ export default function LoginPage() {
                 className="w-full py-2.5 bg-[#024999] text-white font-semibold rounded
                   hover:bg-[#013a7a] transition-colors mt-2"
               >
-                Sign in
+                {t('signIn')}
               </button>
             </form>
 
             {/* bara */}
             <div className="flex items-center gap-3 my-6">
               <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700" />
-              <span className="text-xs text-gray-400">sau</span>
+              <span className="text-xs text-gray-400">/</span>
               <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700" />
             </div>
 
             {/* link register */}
             <p className="text-sm text-center text-gray-600 dark:text-gray-400">
-              Nu ai cont?{' '}
+              {t('noAccount')}
               <Link
                 href="/register"
                 className="text-[#024999] font-medium hover:underline"
               >
-                Înregistrează-te
+                {t('register')}
               </Link>
             </p>
           </div>

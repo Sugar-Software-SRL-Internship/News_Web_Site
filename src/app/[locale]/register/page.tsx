@@ -1,12 +1,14 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 
 export default function RegisterPage() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirm, setConfirm] = useState('')
+  const t = useTranslations('auth')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -22,17 +24,17 @@ export default function RegisterPage() {
           {/* Card */}
           <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-8 shadow-sm">
             <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-              Înregistrare
+              {t('register')}
             </h1>
             <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
-              Creează un cont nou
+              {t('create')}
             </p>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               {/* Nume */}
               <div className="flex flex-col gap-1.5">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Nume complet
+                  {t('fullName')}
                 </label>
                 <input
                   type="text"
@@ -51,7 +53,7 @@ export default function RegisterPage() {
               {/* Email */}
               <div className="flex flex-col gap-1.5">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Email
+                  {t('email')}
                 </label>
                 <input
                   type="email"
@@ -70,7 +72,7 @@ export default function RegisterPage() {
               {/* Parolă */}
               <div className="flex flex-col gap-1.5">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Parolă
+                  {t('password')}
                 </label>
                 <input
                   type="password"
@@ -89,7 +91,7 @@ export default function RegisterPage() {
               {/* Confirmă parola */}
               <div className="flex flex-col gap-1.5">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Confirmă parola
+                  {t('confirmPassword')}
                 </label>
                 <input
                   type="password"
@@ -111,25 +113,25 @@ export default function RegisterPage() {
                 className="w-full py-2.5 bg-[#024999] text-white font-semibold rounded
                   hover:bg-[#013a7a] transition-colors mt-2"
               >
-                Înregistrează-te
+                {t('register')}
               </button>
             </form>
 
             {/* Separator */}
             <div className="flex items-center gap-3 my-6">
               <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700" />
-              <span className="text-xs text-gray-400">sau</span>
+              <span className="text-xs text-gray-400">/</span>
               <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700" />
             </div>
 
             {/* Link login */}
             <p className="text-sm text-center text-gray-600 dark:text-gray-400">
-              Ai deja cont?{' '}
+              {t('hasAccount')}
               <Link
                 href="/login"
                 className="text-[#024999] font-medium hover:underline"
               >
-                Sign in
+                {t('signIn')}
               </Link>
             </p>
           </div>

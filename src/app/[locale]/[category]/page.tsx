@@ -10,6 +10,7 @@ import {
   audioArticles,
   moreNewsArticles,
 } from '@/app/constants/mockData'
+import { getTranslations } from 'next-intl/server'
 
 export default async function CategoryPage({
   params,
@@ -17,17 +18,28 @@ export default async function CategoryPage({
   params: Promise<{ category: string }>
 }) {
   const { category } = await params
+  const tNav = await getTranslations('navigation')
+  const tSub = await getTranslations('submenu')
 
-  const title = category
-    .split('-')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
+  let title = category
+  try {
+    title = tNav(category)
+  } catch {
+    try {
+      title = tSub(category)
+    } catch {
+      title = category
+        .split('-')
+        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(' ')
+    }
+  }
 
   return (
     <Container className="py-6">
       <div className="gap-1 py-4 mx-4 w-auto relative grid">
         <div className="flex justify-center gap-4 min-h-10">
-          <h1 className="relative grid items-center text-red-700 h-7 text-3xl font-bold uppercase">
+          <h1 className="relative grid items-center text-red-700 h-7 text-3xl font-bold uppercase dark:text-red-500">
             {title}
           </h1>
         </div>

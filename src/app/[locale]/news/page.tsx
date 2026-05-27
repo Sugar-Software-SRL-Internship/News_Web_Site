@@ -16,7 +16,7 @@ export default function NewsPage() {
     <Container>
       <div className="gap-1 py-4 mx-4 w-auto relative grid">
         <div className="flex justify-center gap-4 min-h-10">
-          <h1 className="relative grid items-center text-red-700 h-7 text-3xl font-bold uppercase">
+          <h1 className="relative grid items-center text-red-700 dark:text-red-300 h-7 text-3xl font-bold uppercase">
             news
           </h1>
         </div>

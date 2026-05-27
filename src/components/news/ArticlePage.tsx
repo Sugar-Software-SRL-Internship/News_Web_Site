@@ -11,19 +11,21 @@ import { Container } from '@/components/layout/Container'
 import { Section } from '@/components/layout/Section'
 import { HeroGrid } from './HeroGrid'
 import { SaveButton } from '@/components/ui/SaveButton'
+import { useTranslations } from 'next-intl'
 
 interface ArticlePageProps {
   article: ArticleDetail
 }
 
 export function ArticlePage({ article }: ArticlePageProps) {
+  const t = useTranslations('article')
   return (
     <Container>
-      <article className="max-w-full m-auto bg-white dark:bg-black">
+      <article className="max-w-full m-auto dark:bg-[#101727]">
         <div className="mt-6 mb-4 grid justify-center relative">
           <div className="grid grid-flow-row gap-x-4 max-w-[1248px] w-full grid-cols-[repeat(24,1fr)] mx-4">
             <div className="col-[6/span_14]">
-              <h1 className="text-[38px] text-gray-950 font-medium">
+              <h1 className="text-[38px] text-gray-950 dark:text-[#e0e0e0] font-medium">
                 {' '}
                 {article.title}{' '}
               </h1>
@@ -73,7 +75,7 @@ export function ArticlePage({ article }: ArticlePageProps) {
                             fill="#EA4335"
                           />
                         </svg>
-                        Add as preferred on Google
+                        {t('addToGoogle')}
                       </button>
                     </a>
                   </div>
@@ -91,10 +93,10 @@ export function ArticlePage({ article }: ArticlePageProps) {
             </div>
           </div>
         </div>
-        <div className="grid justify-center relative mb-8">
+        <div className="grid justify-center relative mb-8 max-[1279px]:inline">
           <div className="gap-x-2 gap-y-4 grid-flow-row max-w-[1248px] w-full mx-4 grid-cols-[repeat(24,1fr)] grid">
             <div className="col-[4/span_18]">
-              <div className="relative">
+              <div className="relative w-full">
                 {article.imageUrl && (
                   <div className="relative w-full aspect-video overflow-hidden">
                     <Image
@@ -106,7 +108,7 @@ export function ArticlePage({ article }: ArticlePageProps) {
                     />
                   </div>
                 )}
-                <span className="block text-[rgb(230, 232, 234)] absolute px-2 py-1 bg-[rgb(32, 34, 36)] font-normal text-xs">
+                <span className="block text-white absolute px-2 py-1 bg-black dark:text-black dark:bg-white font-normal text-xs bottom-0 right-0">
                   {article.source}
                 </span>
               </div>

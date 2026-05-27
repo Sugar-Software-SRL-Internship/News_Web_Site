@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { Modal } from '@/components/ui/Modal'
 import { Button } from '@/components/ui/Button'
+import { useTranslations } from 'next-intl'
 
 interface SignInModalProps {
   isOpen: boolean
@@ -16,6 +17,7 @@ export function SignInModal({
 }: SignInModalProps) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const t = useTranslations('auth')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -29,7 +31,7 @@ export function SignInModal({
         {/* Email */}
         <div className="flex flex-col gap-1.5">
           <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-            Email
+            {t('email')}
           </label>
           <input
             type="email"
@@ -48,13 +50,13 @@ export function SignInModal({
         <div className="flex flex-col gap-1.5">
           <div className="flex items-center justify-between">
             <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              Parolă
+              {t('password')}
             </label>
             <button
               type="button"
               className="text-xs text-[#bb1919] hover:underline"
             >
-              Ai uitat parola?
+              {t('forgotPassword')}
             </button>
           </div>
           <input
@@ -72,25 +74,25 @@ export function SignInModal({
 
         {/* Buton submit */}
         <Button variant="primary" fullWidth>
-          Sign in
+          {t('signIn')}
         </Button>
 
         {/* Separator */}
         <div className="flex items-center gap-3">
           <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700" />
-          <span className="text-xs text-gray-400">sau</span>
+          <span className="text-xs text-gray-400">/</span>
           <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700" />
         </div>
 
         {/* Switch la Register */}
         <p className="text-sm text-center text-gray-600 dark:text-gray-400">
-          Nu ai cont?{' '}
+          {t('noAccount')}
           <button
             type="button"
             onClick={onSwitchToRegister}
             className="text-[#bb1919] font-medium hover:underline"
           >
-            Înregistrează-te
+            {t('register')}
           </button>
         </p>
       </form>

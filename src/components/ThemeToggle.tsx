@@ -1,19 +1,21 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
+import { useTranslations } from 'next-intl'
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [open, setOpen] = useState(false)
+  const t = useTranslations('theme')
 
   useEffect(() => setMounted(true), [])
   if (!mounted) return null
 
   const themes = [
-    { value: 'light', label: 'Light' },
-    { value: 'dark', label: 'Dark' },
-    { value: 'system', label: 'System' },
+    { value: 'light', label: t('light') },
+    { value: 'dark', label: t('dark') },
+    { value: 'system', label: t('system') },
   ]
 
   return (
@@ -21,12 +23,15 @@ export function ThemeToggle() {
       <button
         onClick={() => setOpen(!open)}
         className="flex items-center gap-1.5 px-3 py-2 text-sm bg-slate-200
-          text-gray-800 dark:text-gray-200 hover:bg-gray-100
-          dark:hover:bg-gray-800 transition-colors text-[14px] font-medium"
+          text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:bg-gray-800
+          dark:hover:bg-gray-700 transition-colors text-[14px] font-medium"
       >
-        {/*<span>{theme === 'dark' ? '🌙' : theme === 'light' ? '☀️' : '💻'}</span>*/}
         <span className="hidden sm:block">
-          {theme === 'dark' ? 'Dark' : theme === 'light' ? 'Light' : 'System'}
+          {theme === 'dark'
+            ? t('dark')
+            : theme === 'light'
+              ? t('light')
+              : t('system')}
         </span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +47,7 @@ export function ThemeToggle() {
         </svg>
       </button>
 
-      {/* Panel expandat */}
+      {/* panel expandat */}
       {open && (
         <>
           {/* Overlay transparent ca sa se inchida la click afara */}
@@ -73,7 +78,6 @@ export function ThemeToggle() {
                         : 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-800 dark:text-gray-200'
                     }`}
                 >
-                  {/*<span>{t.icon}</span>*/}
                   <span>{t.label}</span>
                   {theme === t.value && (
                     <svg

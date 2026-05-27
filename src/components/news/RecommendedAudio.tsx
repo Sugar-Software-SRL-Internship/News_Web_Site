@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useState, useRef } from 'react'
 import Image from 'next/image'
 import { Article } from '@/app/constants/mockData'
@@ -124,13 +124,14 @@ export function RecommendedAudio({ articles }: RecommendedAudioProps) {
     })
   }
   const locale = useLocale()
+  const t = useTranslations('home')
 
   return (
     <div className="py-6 border-b-2 border-gray-900 dark:border-gray-100">
       <div className="flex items-center justify-between mb-4">
         <Link href={`/${locale}/audio`}>
           <h2 className="font-extrabold text-[15px] mb-6 flex items-center gap-2 uppercase hover:underline">
-            recommended audio
+            {t('recommendedAudio')}
             <span className="text-black text-[15px]">›</span>
           </h2>
         </Link>

@@ -1,9 +1,11 @@
 @import 'tailwindcss';
 
+@variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-  --bbc-red: #bb1919;
+  --foreground: #101727;
+  --jurnal-red: #bb1919;
 }
 
 @theme inline {
@@ -15,7 +17,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #101727;
     --foreground: #ededed;
   }
 }
@@ -27,9 +29,9 @@ body {
 }
 
 .dark {
-  --background: #1a1a1a;
+  --background: #101727;
   --foreground: #e0e0e0;
-  --bbc-red: #cc3333;
+  --jurnal-red: #cc3333;
 }
 
 .theme-btn {

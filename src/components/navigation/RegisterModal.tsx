@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { Modal } from '@/components/ui/Modal'
 import { Button } from '@/components/ui/Button'
+import { useTranslations } from 'next-intl'
 
 interface RegisterModalProps {
   isOpen: boolean
@@ -18,6 +19,7 @@ export function RegisterModal({
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirm, setConfirm] = useState('')
+  const t = useTranslations('auth')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -26,12 +28,12 @@ export function RegisterModal({
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="Înregistrare">
+    <Modal isOpen={isOpen} onClose={onClose} title={t('signIn')}>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        {/* Nume */}
+        {/* nume */}
         <div className="flex flex-col gap-1.5">
           <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-            Nume complet
+            {t('fullName')}
           </label>
           <input
             type="text"
@@ -46,10 +48,10 @@ export function RegisterModal({
           />
         </div>
 
-        {/* Email */}
+        {/* email */}
         <div className="flex flex-col gap-1.5">
           <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-            Email
+            {t('email')}
           </label>
           <input
             type="email"
@@ -64,10 +66,10 @@ export function RegisterModal({
           />
         </div>
 
-        {/* Parolă */}
+        {/* passwd */}
         <div className="flex flex-col gap-1.5">
           <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-            Parolă
+            {t('password')}
           </label>
           <input
             type="password"
@@ -82,10 +84,10 @@ export function RegisterModal({
           />
         </div>
 
-        {/* Confirmă parola */}
+        {/* confirma passwd */}
         <div className="flex flex-col gap-1.5">
           <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-            Confirmă parola
+            {t('confirmPassword')}
           </label>
           <input
             type="password"
@@ -100,20 +102,20 @@ export function RegisterModal({
           />
         </div>
 
-        {/* Buton submit */}
+        {/* submit */}
         <Button variant="primary" fullWidth>
-          Înregistrează-te
+          {t('register')}
         </Button>
 
-        {/* Switch la Sign In */}
+        {/* switch la Sign In */}
         <p className="text-sm text-center text-gray-600 dark:text-gray-400">
-          Ai deja cont?{' '}
+          {t('hasAccount')}
           <button
             type="button"
             onClick={onSwitchToSignIn}
             className="text-[#bb1919] font-medium hover:underline"
           >
-            Sign in
+            {t('signIn')}
           </button>
         </p>
       </form>

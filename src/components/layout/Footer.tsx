@@ -1,65 +1,71 @@
+'use client'
+
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { Logo } from '@/components/navigation/Logo'
 import { LanguageSwitcher } from '../LanguageSwitcher'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
+import Link from 'next/link'
 
 export function Footer() {
   const locale = useLocale()
+  const tNav = useTranslations('navigation')
+  const tFooter = useTranslations('footer')
+
   return (
     <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="h-px bg-gray-900 dark:bg-gray-700 mb-2 mt-13 w-full" />
+      <div className="h-px bg-gray-900 dark:bg-white mb-2 mt-13 w-full" />
       {/*<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"> */}
       <div className="w-[105px] h-[30px]">
         <Logo />
       </div>
-      <div className="flex flex-wrap gap-4 text-sm text-black dark:text-gray-400 mt-[29px]">
-        <a href="`/${locale}/home`" className="hover:underline">
-          Home
+      <div className="flex flex-wrap gap-4 text-sm dark:text-gray-100 mt-[29px]">
+        <a href={`/${locale}/home`} className="hover:underline">
+          {tNav('home')}
         </a>
-        <a href="`/${locale}/news`" className="hover:underline">
-          News
+        <a href={`/${locale}/news`} className="hover:underline">
+          {tNav('news')}
         </a>
-        <a href="`/${locale}/sport`" className="hover:underline">
-          Sport
+        <a href={`/${locale}/sport`} className="hover:underline">
+          {tNav('sport')}
         </a>
-        <a href="`/${locale}/business`" className="hover:underline">
-          Business
+        <a href={`/${locale}/business`} className="hover:underline">
+          {tNav('business')}
         </a>
-        <a href="`/${locale}/technology`" className="hover:underline">
-          Technology
+        <a href={`/${locale}/technology`} className="hover:underline">
+          {tNav('technology')}
         </a>
-        <a href="`/${locale}/health`" className="hover:underline">
-          Health
+        <a href={`/${locale}/health`} className="hover:underline">
+          {tNav('health')}
         </a>
-        <a href="`/${locale}/culture`" className="hover:underline">
-          Culture
+        <a href={`/${locale}/culture`} className="hover:underline">
+          {tNav('culture')}
         </a>
-        <a href="`/${locale}/arts`" className="hover:underline">
-          Arts
+        <a href={`/${locale}/arts`} className="hover:underline">
+          {tNav('arts')}
         </a>
-        <a href="`/${locale}/travel`" className="hover:underline">
-          Travel
+        <a href={`/${locale}/travel`} className="hover:underline">
+          {tNav('travel')}
         </a>
-        <a href="`/${locale}/earth`" className="hover:underline">
-          Earth
+        <a href={`/${locale}/earth`} className="hover:underline">
+          {tNav('earth')}
         </a>
-        <a href="`/${locale}/audio`" className="hover:underline">
-          Audio
+        <a href={`/${locale}/audio`} className="hover:underline">
+          {tNav('audio')}
         </a>
-        <a href="`/${locale}/video`" className="hover:underline">
-          Video
+        <a href={`/${locale}/video`} className="hover:underline">
+          {tNav('video')}
         </a>
-        <a href="`/${locale}/live`" className="hover:underline">
-          Live
+        <a href={`/${locale}/live`} className="hover:underline">
+          {tNav('live')}
         </a>
-        <a href="`/${locale}/home`" className="hover:underline">
-          Weather
+        <a href={`/${locale}/home`} className="hover:underline">
+          {tNav('weather')}
         </a>
-        <a href="`/${locale}/home`" className="hover:underline">
-          BBC Shop
+        <a href={`/${locale}/home`} className="hover:underline">
+          {tNav('shop')}
         </a>
-        <a href="`/${locale}/home`" className="hover:underline">
-          BritBox
+        <a href={`/${locale}/home`} className="hover:underline">
+          {tNav('britbox')}
         </a>
       </div>
       <div className="mt-[21px] flex flex-row gap-4">
@@ -72,15 +78,15 @@ export function Footer() {
         <div className="h-px bg-gray-200 dark:bg-gray-700 mb-4 w-full" />
         <div className="flex flex-row">
           <div className="text-base font-medium mr-10">
-            <p>Follow BBC on:</p>
+            <p>{tFooter('followUs')}</p>
           </div>
 
           <div className="flex gap-4">
             <a
-              href="https://twitter.com/bbc"
+              href="https://x.com/Jurnal_TV"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-900 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center justify-center"
+              className="hover:text-black dark:hover:text-white transition-colors flex items-center justify-center"
             >
               <svg
                 width="14"
@@ -92,10 +98,10 @@ export function Footer() {
               </svg>
             </a>
             <a
-              href="https://facebook.com/bbc"
+              href="https://www.facebook.com/jurnaltv.md/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-900 dark:text-gray-400 hover:text-[#1877F2] transition-colors flex items-center justify-center"
+              className="hover:text-[#1877F2] transition-colors flex items-center justify-center"
             >
               <svg
                 width="14"
@@ -107,10 +113,10 @@ export function Footer() {
               </svg>
             </a>
             <a
-              href="https://instagram.com/bbc"
+              href="https://www.instagram.com/jurnaltv.md/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-900 dark:text-gray-400 hover:text-[#E1306C] transition-colors flex items-center justify-center"
+              className="hover:text-[#E1306C] transition-colors flex items-center justify-center"
             >
               <svg
                 width="14"
@@ -122,10 +128,10 @@ export function Footer() {
               </svg>
             </a>
             <a
-              href="https://tiktok.com/@bbc"
+              href="https://www.tiktok.com/@jurnaltv.md"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-900 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center justify-center"
+              className="hover:text-black dark:hover:text-white transition-colors flex items-center justify-center"
             >
               <svg
                 width="14"
@@ -137,10 +143,10 @@ export function Footer() {
               </svg>
             </a>
             <a
-              href="https://linkedin.com/company/bbc"
+              href="https://md.linkedin.com/company/jurnaltv"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-900 dark:text-gray-400 hover:text-[#0A66C2] transition-colors flex items-center justify-center"
+              className="hover:text-[#0A66C2] transition-colors flex items-center justify-center"
             >
               <svg
                 width="14"
@@ -152,10 +158,10 @@ export function Footer() {
               </svg>
             </a>
             <a
-              href="https://youtube.com/bbc"
+              href="https://www.youtube.com/user/JurnalTV"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-900 dark:text-gray-400 hover:text-[#FF0000] transition-colors flex items-center justify-center"
+              className="hover:text-[#FF0000] transition-colors flex items-center justify-center"
             >
               <svg
                 width="14"
@@ -170,51 +176,49 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-4 text-xs text-black dark:text-gray-400 mt-4">
+      <div className="flex flex-wrap gap-4 text-xs dark:text-gray-400 mt-4">
         <a href="#" className="hover:underline">
-          Terms of Use
+          {tFooter('terms')}
         </a>
         <a href="#" className="hover:underline">
-          Subscription Terms
+          {tFooter('subscriptionTerms')}
         </a>
         <a href="#" className="hover:underline">
-          About the BBC
+          {tFooter('about')}
         </a>
         <a href="#" className="hover:underline">
-          Privacy Policy
+          {tFooter('privacy')}
         </a>
         <a href="#" className="hover:underline">
-          Cookies
+          {tFooter('cookies')}
         </a>
         <a href="#" className="hover:underline">
-          Accessibility Help
+          {tFooter('accessibility')}
         </a>
         <a href="#" className="hover:underline">
-          Contact the BBC
+          {tFooter('contact')}
         </a>
         <a href="#" className="hover:underline">
-          Advertise with us
+          {tFooter('advertise')}
         </a>
         <a href="#" className="hover:underline">
-          Do not share or sell my info
+          {tFooter('doNotShare')}
         </a>
         <a href="#" className="hover:underline">
-          BBC.com Help & FAQs
+          {tFooter('help')}
         </a>
         <a href="#" className="hover:underline">
-          Content Index
+          {tFooter('contentIndex')}
         </a>
         <a href="#" className="hover:underline">
-          Set Preferred Source
+          {tFooter('setSource')}
         </a>
       </div>
       <div className="mt-4">
-        <p className="text-xs text-black dark:text-gray-500">
-          Copyright 2026 BBC. All rights reserved. The BBC is not responsible
-          for the content of external sites.{' '}
-          <a href="#" className="text-black font-bold">
-            {' '}
-            Read about our approach to external linking.{' '}
+        <p className="text-xs dark:text-gray-500">
+          {tFooter('copyright')}
+          <a href="#" className="font-bold">
+            {tFooter('readmore')}
           </a>
         </p>
       </div>

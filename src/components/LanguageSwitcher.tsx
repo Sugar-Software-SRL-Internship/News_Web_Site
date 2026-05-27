@@ -1,18 +1,19 @@
 'use client'
 import { useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
-import { useLocale } from 'next-intl'
-
-const languages = [
-  { code: 'ro', label: 'Română', nativeLabel: 'RO' },
-  { code: 'en', label: 'English', nativeLabel: 'EN' },
-]
+import { useLocale, useTranslations } from 'next-intl'
 
 export function LanguageSwitcher() {
   const [open, setOpen] = useState(false)
   const router = useRouter()
   const pathname = usePathname()
   const locale = useLocale()
+  const t = useTranslations('language')
+
+  const languages = [
+    { code: 'ro', label: t('ro'), nativeLabel: 'RO' },
+    { code: 'en', label: t('en'), nativeLabel: 'EN' },
+  ]
 
   const switchLanguage = (newLocale: string) => {
     // de inlocuit locale-ul curent din url
@@ -29,8 +30,8 @@ export function LanguageSwitcher() {
       <button
         onClick={() => setOpen(!open)}
         className="flex items-center gap-1.5 px-3 py-2 text-sm bg-slate-200
-          text-gray-800 dark:text-gray-200 hover:bg-gray-100
-          dark:hover:bg-gray-800 transition-colors font-medium"
+          text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:bg-gray-800
+          dark:hover:bg-gray-700 transition-colors font-medium"
       >
         <span>{currentLang?.nativeLabel}</span>
         <svg
@@ -57,7 +58,7 @@ export function LanguageSwitcher() {
             border border-gray-200 dark:border-gray-700 shadow-lg p-4 min-w-48"
           >
             <p className="text-xs font-bold uppercase text-gray-500 dark:text-gray-400 mb-3">
-              Selectează limba
+              {t('select')}
             </p>
 
             <div className="flex flex-col gap-1">

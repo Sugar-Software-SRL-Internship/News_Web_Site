@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { useLocale } from 'next-intl'
 import Image from 'next/image'
 import { Article } from '@/app/constants/mockData'
+import { useTranslations } from 'next-intl'
 
 function HorizontalArticle({ article }: { article: Article }) {
   const locale = useLocale()
@@ -39,10 +40,11 @@ interface OnlyFromBBCProps {
 }
 
 export function OnlyFromBBC({ articles }: OnlyFromBBCProps) {
+  const t = useTranslations('home')
   return (
-    <div className="py-6 border-b-2 border-gray-900 dark:border-gray-100">
+    <div className="py-6 border-b-2 border-gray-900 dark:border-white">
       <h2 className="font-extrabold text-[15px] mb-6 flex items-center gap-2 uppercase">
-        only from bbc
+        {t('onlyFrom')}
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4">
