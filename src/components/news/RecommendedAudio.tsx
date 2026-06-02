@@ -1,4 +1,6 @@
 'use client'
+import Link from 'next/link'
+import { useLocale, useTranslations } from 'next-intl'
 import { useState, useRef } from 'react'
 import Image from 'next/image'
 import { Article } from '@/app/constants/mockData'
@@ -8,6 +10,7 @@ import { RegisterModal } from '../navigation'
 
 // card audio individual
 function AudioCard({ article }: { article: Article }) {
+  const locale = useLocale()
   const [saved, setSaved] = useState(false)
   const [showSignIn, setShowSignIn] = useState(false)
   const [showRegister, setShowRegister] = useState(false)
@@ -25,77 +28,84 @@ function AudioCard({ article }: { article: Article }) {
   }
 
   return (
-    <>
-      <div className="group cursor-pointer flex flex-col gap-2 w-45 h-full shrink-0">
-        <div className="relative w-45 h-45 overflow-hidden">
-          <Image
-            src={article.imageUrl}
-            alt={article.title}
-            fill
-            className="object-cover transition-transform duration-300"
-          />
-        </div>
+    <Link
+      href={`/${locale}/news/${article.slug}`}
+      className="group cursor-pointer flex flex-col gap-2"
+    >
+      <>
+        <div className="group cursor-pointer flex flex-col gap-2 w-45 h-full shrink-0">
+          <div className="relative w-45 h-45 overflow-hidden">
+            <Image
+              src={article.imageUrl}
+              alt={article.title}
+              fill
+              className="object-cover transition-transform duration-300"
+            />
+          </div>
 
-        <div className="flex flex-col gap-2">
-          <p className="text-xs text-gray-400 font-medium">{article.author}</p>
-          <h3 className="font-bold text-sm leading-snug group-hover:underline transition-colors line-clamp-2">
-            {article.title}
-          </h3>
-
-          <div className="flex items-center justify-between mt-4.5">
-            {/* buton save */}
-            <button
-              onClick={handleSave}
-              className="flex items-center gap-1 text-xs text-gray-500 hover:text-opacity-80 transition-colors"
-            >
-              {saved ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M5 3h14a1 1 0 011 1v17l-7-3.5L6 21V4a1 1 0 011-1z" />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path d="M5 3h14a1 1 0 011 1v17l-7-3.5L6 21V4a1 1 0 011-1z" />
-                </svg>
-              )}
-              {saved ? 'Saved' : 'Save'}
-            </button>
-            <p className="text-xs text-gray-400">
-              <TimeAgo date={article.publishedAt} />
+          <div className="flex flex-col gap-2">
+            <p className="text-xs text-gray-400 font-medium">
+              {article.author}
             </p>
+            <h3 className="font-bold text-sm leading-snug group-hover:underline transition-colors line-clamp-2">
+              {article.title}
+            </h3>
+
+            <div className="flex items-center justify-between mt-4.5">
+              {/* buton save */}
+              <button
+                onClick={handleSave}
+                className="flex items-center gap-1 text-xs text-gray-500 hover:text-opacity-80 transition-colors"
+              >
+                {saved ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M5 3h14a1 1 0 011 1v17l-7-3.5L6 21V4a1 1 0 011-1z" />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path d="M5 3h14a1 1 0 011 1v17l-7-3.5L6 21V4a1 1 0 011-1z" />
+                  </svg>
+                )}
+                {saved ? 'Saved' : 'Save'}
+              </button>
+              <p className="text-xs text-gray-400">
+                <TimeAgo date={article.publishedAt} />
+              </p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <SignInModal
-        isOpen={showSignIn}
-        onClose={() => setShowSignIn(false)}
-        onSwitchToRegister={() => {
-          ;(setShowSignIn(false), setShowRegister(true))
-        }}
-      />
+        <SignInModal
+          isOpen={showSignIn}
+          onClose={() => setShowSignIn(false)}
+          onSwitchToRegister={() => {
+            ;(setShowSignIn(false), setShowRegister(true))
+          }}
+        />
 
-      <RegisterModal
-        isOpen={showRegister}
-        onClose={() => setShowRegister(false)}
-        onSwitchToSignIn={() => {
-          ;(setShowRegister(false), setShowSignIn(true))
-        }}
-      />
-    </>
+        <RegisterModal
+          isOpen={showRegister}
+          onClose={() => setShowRegister(false)}
+          onSwitchToSignIn={() => {
+            ;(setShowRegister(false), setShowSignIn(true))
+          }}
+        />
+      </>
+    </Link>
   )
 }
 
@@ -113,11 +123,18 @@ export function RecommendedAudio({ articles }: RecommendedAudioProps) {
       behavior: 'smooth',
     })
   }
+  const locale = useLocale()
+  const t = useTranslations('home')
 
   return (
     <div className="py-6 border-b-2 border-gray-900 dark:border-gray-100">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-[15px] font-bold">RECOMMENDED AUDIO</h2>
+        <Link href={`/${locale}/audio`}>
+          <h2 className="font-extrabold text-[15px] mb-6 flex items-center gap-2 uppercase hover:underline">
+            {t('recommendedAudio')}
+            <span className="text-black text-[15px]">›</span>
+          </h2>
+        </Link>
 
         <div className="flex gap-3">
           <button

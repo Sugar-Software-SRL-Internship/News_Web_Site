@@ -2,11 +2,14 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { navItems } from '@/constants/navigation'
+import { useTranslations } from 'next-intl'
 
 export function HamburgerMenu() {
   const [isOpen, setIsOpen] = useState(false)
   const [search, setSearch] = useState('')
   const [expandedItem, setExpandedItem] = useState<string | null>(null)
+  const t = useTranslations('navigation')
+  const tSub = useTranslations('submenu')
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -117,7 +120,7 @@ export function HamburgerMenu() {
                   onClick={() => setIsOpen(false)}
                   className="font-bold flex-1 px-4 py-3 text-base text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                 >
-                  {item.label}
+                  {t(item.key)}
                 </Link>
 
                 {item.submenu && (
@@ -163,7 +166,7 @@ export function HamburgerMenu() {
                       onClick={() => setIsOpen(false)}
                       className="block px-6 py-2.5 text-sm text-gray-600 dark:text-gray-400  hover:bg-gray-100 dark:hover:text-[#bb1919] dark:hover:bg-gray-700 transition-colors border-b border-gray-200 dark:border-gray-700 last:border-0"
                     >
-                      {link.label}
+                      {link.key ? tSub(link.key as string) : link.label}
                     </Link>
                   ))}
                 </div>

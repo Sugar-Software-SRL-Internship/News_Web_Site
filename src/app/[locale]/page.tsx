@@ -31,7 +31,7 @@ export default function HomePage() {
       <MoreNews
         bigArticles={moreNewsArticles.slice(0, 1)}
         largeArticles={moreNewsArticles.slice(0, 3)}
-        smallArticles={moreNewsArticles.slice(3, 6)}
+        //smallArticles={moreNewsArticles.slice(3, 6)}
         sideArticles={moreNewsArticles.slice(6, 9)}
       />
     </Container>

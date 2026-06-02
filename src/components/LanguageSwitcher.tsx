@@ -1,38 +1,39 @@
 'use client'
-import { useEffect, useState } from 'react'
-import { useTheme } from 'next-themes'
-import { useTranslations } from 'next-intl'
+import { useState } from 'react'
+import { useRouter, usePathname } from 'next/navigation'
+import { useLocale, useTranslations } from 'next-intl'
 
-export function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
+export function LanguageSwitcher() {
   const [open, setOpen] = useState(false)
-  const t = useTranslations('theme')
+  const router = useRouter()
+  const pathname = usePathname()
+  const locale = useLocale()
+  const t = useTranslations('language')
 
-  useEffect(() => setMounted(true), [])
-  if (!mounted) return null
-
-  const themes = [
-    { value: 'light', label: t('light') },
-    { value: 'dark', label: t('dark') },
-    { value: 'system', label: t('system') },
+  const languages = [
+    { code: 'ro', label: t('ro'), nativeLabel: 'RO' },
+    { code: 'en', label: t('en'), nativeLabel: 'EN' },
   ]
+
+  const switchLanguage = (newLocale: string) => {
+    // de inlocuit locale-ul curent din url
+    const newPath = pathname.replace(`/${locale}`, `/${newLocale}`)
+    router.push(newPath)
+    setOpen(false)
+  }
+
+  const currentLang = languages.find((l) => l.code === locale)
 
   return (
     <div className="relative">
+      {/* buton principal */}
       <button
         onClick={() => setOpen(!open)}
         className="flex items-center gap-1.5 px-3 py-2 text-sm bg-slate-200
           text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:bg-gray-800
-          dark:hover:bg-gray-700 transition-colors text-[14px] font-medium"
+          dark:hover:bg-gray-700 transition-colors font-medium"
       >
-        <span className="hidden sm:block">
-          {theme === 'dark'
-            ? t('dark')
-            : theme === 'light'
-              ? t('light')
-              : t('system')}
-        </span>
+        <span>{currentLang?.nativeLabel}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="14"
@@ -50,36 +51,32 @@ export function ThemeToggle() {
       {/* panel expandat */}
       {open && (
         <>
-          {/* Overlay transparent ca sa se inchida la click afara */}
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
 
-          {/* Panel */}
           <div
             className="absolute left-0 top-full mt-1 z-50 bg-white dark:bg-gray-900
             border border-gray-200 dark:border-gray-700 shadow-lg p-4 min-w-48"
           >
             <p className="text-xs font-bold uppercase text-gray-500 dark:text-gray-400 mb-3">
-              Selectează tema
+              {t('select')}
             </p>
 
             <div className="flex flex-col gap-1">
-              {themes.map((t) => (
+              {languages.map((lang) => (
                 <button
-                  key={t.value}
-                  onClick={() => {
-                    setTheme(t.value)
-                    setOpen(false)
-                  }}
+                  key={lang.code}
+                  onClick={() => switchLanguage(lang.code)}
                   className={`flex items-center gap-3 px-3 py-2 text-sm
                     transition-colors text-left
                     ${
-                      theme === t.value
+                      locale === lang.code
                         ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold'
                         : 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-800 dark:text-gray-200'
                     }`}
                 >
-                  <span>{t.label}</span>
-                  {theme === t.value && (
+                  <span className="font-bold text-xs">{lang.nativeLabel}</span>
+                  <span>{lang.label}</span>
+                  {locale === lang.code && (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="14"

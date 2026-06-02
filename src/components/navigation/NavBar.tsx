@@ -1,13 +1,16 @@
 'use client'
 import Link from 'next/link'
+import { useLocale, useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { SubMenu } from './SubMenu'
 import { navItems } from '@/constants/navigation'
 
 export function NavBar() {
+  const locale = useLocale()
   const pathname = usePathname()
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
+  const t = useTranslations('navigation')
 
   const handleNavClick = (href: string) => {
     if (activeSubmenu === href) {
@@ -29,22 +32,23 @@ export function NavBar() {
                 pathname.includes(item.href) || activeSubmenu === item.href
 
               return (
-                <button
+                <Link
                   key={item.href}
+                  href={`/${locale}${item.href}`}
                   onClick={() => handleNavClick(item.href)}
                   className={`
-                    relative px-4 py-3 text-sm font-medium whitespace-nowrap
-                    transition-colors hover:bg-gray-100 dark:hover:bg-gray-800
-                    text-gray-800 dark:text-gray-200 shrink-0
-                    ${
-                      isActive
-                        ? 'after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#bb1919]'
-                        : ''
-                    }
-                  `}
+        relative px-2 py-3 text-sm font-bold whitespace-nowrap
+        transition-colors hover:bg-gray-100 dark:hover:bg-gray-800
+        text-gray-800 dark:text-gray-200 shrink-0
+        ${
+          isActive
+            ? 'after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-black'
+            : ''
+        }
+      `}
                 >
-                  {item.label}
-                </button>
+                  {t(item.key)}
+                </Link>
               )
             })}
           </div>

@@ -1,42 +1,31 @@
 'use client'
-import { useState } from 'react'
-import { SignInModal } from './SignInModal'
-import { RegisterModal } from './RegisterModal'
+import Link from 'next/link'
+import { useLocale, useTranslations } from 'next-intl'
 
 export function AuthButtons() {
-  const [showSignIn, setShowSignIn] = useState(false)
-  const [showRegister, setShowRegister] = useState(false)
-
-  const openSignIn = () => {
-    setShowRegister(false)
-    setShowSignIn(true)
-  }
-
-  const openRegister = () => {
-    setShowSignIn(false)
-    setShowRegister(true)
-  }
+  const locale = useLocale()
+  const t = useTranslations('navigation')
 
   return (
-    <>
+    <div className="flex items-center gap-2">
       <div className="hidden md:flex items-center gap-2">
-        <button
-          onClick={openRegister}
-          className="px-3 py-1.5 text-sm font-medium bg-gray-900 dark:bg-gray-200 text-white dark:text-gray-800 hover:opacity-90 transition-opacity"
+        <Link
+          href={`/${locale}/register`}
+          className="px-3 py-1.5 text-sm font-medium bg-gray-900 text-white hover:opacity-90 transition-colors dark:bg-white dark:text-[#101727]"
         >
-          Register
-        </button>
-        <button
-          onClick={openSignIn}
-          className="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-800 hover:text-white transition-colors"
+          {t('register')}
+        </Link>
+        <Link
+          href={`/${locale}/login`}
+          className="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-gray-200 hover:underline transition-colors"
         >
-          Sign in
-        </button>
+          {t('signIn')}
+        </Link>
       </div>
-
-      <button
-        onClick={openSignIn}
-        className="md:hidden p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
+      {/* responsive */}
+      <Link
+        href={`/${locale}/login`}
+        className="md:hidden p-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
         aria-label="Cont"
       >
         <svg
@@ -54,18 +43,7 @@ export function AuthButtons() {
           />
           <circle cx="12" cy="7" r="4" />
         </svg>
-      </button>
-
-      <SignInModal
-        isOpen={showSignIn}
-        onClose={() => setShowSignIn(false)}
-        onSwitchToRegister={openRegister}
-      />
-      <RegisterModal
-        isOpen={showRegister}
-        onClose={() => setShowRegister(false)}
-        onSwitchToSignIn={openSignIn}
-      />
-    </>
+      </Link>
+    </div>
   )
 }

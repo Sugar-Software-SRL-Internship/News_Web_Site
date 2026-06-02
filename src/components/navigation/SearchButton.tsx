@@ -1,8 +1,10 @@
 'use client'
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 export function SearchBar() {
   const [open, setOpen] = useState(false)
+  const t = useTranslations('search')
 
   return (
     <div className="relative flex items-center">
@@ -23,9 +25,7 @@ export function SearchBar() {
           <circle cx="11" cy="11" r="8" />
           <path strokeLinecap="round" d="M21 21l-4.35-4.35" />
         </svg>
-        <span className="text-sm font-medium">
-          Search news, topics and more
-        </span>
+        <span className="text-sm font-medium">{t('cauta')}</span>
       </button>
 
       {open && (

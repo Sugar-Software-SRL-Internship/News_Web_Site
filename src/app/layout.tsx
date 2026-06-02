@@ -1,4 +1,5 @@
 import { ThemeProvider } from '@/components/ThemeProvider'
+import './globals.css'
 
 export default function RootLayout({
   children,
@@ -7,7 +8,10 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning>
-      <body suppressHydrationWarning>
+      <body
+        suppressHydrationWarning
+        className="bg-white dark:bg-gray-900 transition-colors"
+      >
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

@@ -3,66 +3,40 @@
     "home": "Home",
     "news": "News",
     "sport": "Sport",
+    "business": "Business",
+    "technology": "Technology",
+    "health": "Health",
+    "culture": "Culture",
+    "arts": "Arts",
+    "travel": "Travel",
+    "earth": "Earth",
+    "audio": "Audio",
     "video": "Video",
     "live": "Live",
-    "shows": "Shows",
+    "weather": "Weather",
+    "shop": "Jurnal TV Shop",
+    "britbox": "BritBox",
     "search": "Search",
-    "menu": "Menu"
+    "menu": "Menu",
+    "signIn": "Sign in",
+    "register": "Register"
   },
-  "categories": {
-    "politics": "Politics",
-    "world": "World",
-    "business": "Business",
-    "tech": "Technology",
-    "science": "Science",
-    "health": "Health",
-    "entertainment": "Entertainment",
-    "sport": "Sport"
-  },
-  "home": {
-    "title": "Latest news",
-    "breaking": "Breaking news",
-    "topStories": "Top stories",
-    "mostRead": "Most read",
-    "recommended": "Recommended"
-  },
-  "news": {
-    "title": "News",
-    "latest": "Latest news",
-    "readMore": "Read more",
-    "publishedAt": "Published at",
-    "updatedAt": "Updated at",
-    "author": "Author",
-    "share": "Share",
-    "relatedArticles": "Related articles",
-    "breakingNews": "Breaking news"
-  },
-  "video": {
-    "title": "Video",
-    "watch": "Watch",
-    "duration": "Duration",
-    "views": "Views",
-    "recommended": "Recommended videos",
-    "latest": "Latest videos"
-  },
-  "live": {
-    "title": "Live",
-    "watching": "Watching now",
-    "startedAt": "Started at",
-    "liveUpdate": "Live update"
-  },
-  "shows": {
-    "title": "Shows",
-    "episodes": "Episodes",
-    "season": "Season",
-    "episode": "Episode",
-    "watchNow": "Watch now"
-  },
-  "search": {
-    "placeholder": "Search news...",
-    "results": "Results for",
-    "noResults": "No results found",
-    "searching": "Searching..."
+  "footer": {
+    "followUs": "Follow Jurnal TV on:",
+    "terms": "Terms of use",
+    "subscriptionTerms": "Subscription terms",
+    "about": "About the Jurnal TV",
+    "privacy": "Privacy policy",
+    "cookies": "Cookies",
+    "accessibility": "Accessibility help",
+    "contact": "Contact the Jurnal TV",
+    "advertise": "Advertise with us",
+    "doNotShare": "Do not share or sell my info",
+    "help": "Help & FAQs",
+    "contentIndex": "Content index",
+    "setSource": "Set preferred source",
+    "copyright": "Copyright 2026 Jurnal TV. All rights reserved. The Jurnal TV is not responsible for the content of external sites.",
+    "readmore": " Read about our approach to external linking."
   },
   "common": {
     "readMore": "Read more",
@@ -74,34 +48,109 @@
     "seeAll": "See all",
     "share": "Share",
     "save": "Save",
-    "cancel": "Cancel",
-    "confirm": "Confirm",
-    "yes": "Yes",
-    "no": "No"
+    "saved": "Saved",
+    "cancel": "Cancel"
   },
-  "errors": {
-    "404": "Page not found",
-    "500": "Server error",
-    "notFound": "Content does not exist",
-    "generic": "Something went wrong"
+  "home": {
+    "title": "Latest news",
+    "breaking": "Breaking news",
+    "onlyFrom": "Only from Jurnal TV",
+    "recommendedAudio": "Recommended audio",
+    "moreNews": "More News"
   },
-  "cookies": {
-    "title": "We use cookies",
-    "description": "We use cookies to improve your experience on our site.",
-    "accept": "Accept all",
-    "reject": "Reject",
-    "settings": "Cookie settings"
-  },
-  "footer": {
-    "about": "About us",
-    "contact": "Contact",
-    "privacy": "Privacy policy",
-    "terms": "Terms and conditions",
-    "cookies": "Cookie policy",
-    "copyright": "All rights reserved"
+  "article": {
+    "share": "Share",
+    "save": "Save",
+    "saved": "Saved",
+    "addToGoogle": "Add as preferred on Google"
   },
   "theme": {
-    "light": "Light Theme",
-    "dark": "Dark Theme"
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "language": {
+    "select": "Select language",
+    "ro": "Romanian",
+    "en": "English"
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "fullName": "Full name",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account? ",
+    "hasAccount": "Already have an account? ",
+    "info": "Sign in your account to continue",
+    "create": "Create a new account"
+  },
+
+  "search": {
+    "cauta": "Search news, topics and more"
+  },
+
+  "submenu": {
+    "usCanada": "US & Canada",
+    "uk": "United Kingdom",
+    "africa": "Africa",
+    "asia": "Asia",
+    "australia": "Australia",
+    "europe": "Europe",
+    "latinAmerica": "Latin America",
+    "middleEast": "Middle East",
+    "inPictures": "In Pictures",
+    "inDepth": "BBC InDepth",
+    "verify": "BBC Verify",
+
+    "football": "Football",
+    "cricket": "Cricket",
+    "formula1": "Formula 1",
+    "rugby": "Rugby",
+    "tennis": "Tennis",
+    "golf": "Golf",
+    "cycling": "Cycling",
+    "athletics": "Athletics",
+
+    "world": "World of Business",
+    "technology": "Technology of Business",
+    "nyse": "NYSE Opening Bell",
+
+    "ai": "Artificial Intelligence",
+    "ir": "Intelligence Revolution",
+    "aimind": "AI v the Mind",
+
+    "film": "Film & TV",
+    "music": "Music",
+    "art": "Art & Design",
+    "style": "Style",
+    "books": "Books",
+    "entertainment": "Entertainment News",
+
+    "arts": "Arts in Motion",
+
+    "destination": "Destinations",
+    "table": "World's Table",
+    "experience": "Culture & Experiences",
+    "adventure": "Adventures",
+    "specialist": "The SpeciaList",
+
+    "science": "Science",
+    "natural": "Natural Wonders",
+    "climate": "Climate Solutions",
+    "sustainable": "Sustainable Business",
+    "green": "Green Living",
+
+    "podcast": "Podcast Categories",
+    "radio": "Radio",
+    "faq": "Audio FAQs",
+
+    "maestro": "BBC Maestro",
+    "discover": "Discover the World",
+
+    "livenews": "Live News",
+    "livesport": "Live Sport"
   }
 }

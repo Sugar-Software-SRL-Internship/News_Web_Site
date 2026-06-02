@@ -3,66 +3,40 @@
     "home": "Acasă",
     "news": "Știri",
     "sport": "Sport",
+    "business": "Afaceri",
+    "technology": "Tehnologie",
+    "health": "Sănătate",
+    "culture": "Cultură",
+    "arts": "Arte",
+    "travel": "Călătorii",
+    "earth": "Pământ",
+    "audio": "Audio",
     "video": "Video",
     "live": "Live",
-    "shows": "Emisiuni",
+    "weather": "Vreme",
+    "shop": "Jurnal TV Shop",
+    "britbox": "BritBox",
     "search": "Caută",
-    "menu": "Meniu"
+    "menu": "Meniu",
+    "signIn": "Autentificare",
+    "register": "Înregistrare"
   },
-  "categories": {
-    "politics": "Politică",
-    "world": "Lume",
-    "business": "Business",
-    "tech": "Tehnologie",
-    "science": "Știință",
-    "health": "Sănătate",
-    "entertainment": "Divertisment",
-    "sport": "Sport"
-  },
-  "home": {
-    "title": "Ultimele știri",
-    "breaking": "Ultima oră",
-    "topStories": "Principalele știri",
-    "mostRead": "Cele mai citite",
-    "recommended": "Recomandate"
-  },
-  "news": {
-    "title": "Știri",
-    "latest": "Ultimele știri",
-    "readMore": "Citește mai mult",
-    "publishedAt": "Publicat la",
-    "updatedAt": "Actualizat la",
-    "author": "Autor",
-    "share": "Distribuie",
-    "relatedArticles": "Articole similare",
-    "breakingNews": "Știre de ultimă oră"
-  },
-  "video": {
-    "title": "Video",
-    "watch": "Urmărește",
-    "duration": "Durată",
-    "views": "Vizualizări",
-    "recommended": "Videoclipuri recomandate",
-    "latest": "Ultimele videoclipuri"
-  },
-  "live": {
-    "title": "Live",
-    "watching": "Se urmărește acum",
-    "startedAt": "Început la",
-    "liveUpdate": "Actualizare Live"
-  },
-  "shows": {
-    "title": "Emisiuni",
-    "episodes": "Episoade",
-    "season": "Sezon",
-    "episode": "Episod",
-    "watchNow": "Urmărește acum"
-  },
-  "search": {
-    "placeholder": "Caută știri...",
-    "results": "Rezultate pentru",
-    "noResults": "Nu s-au găsit rezultate",
-    "searching": "Se caută..."
+  "footer": {
+    "followUs": "Urmărește Jurnal TV pe:",
+    "terms": "Termeni de utilizare",
+    "subscriptionTerms": "Termeni abonament",
+    "about": "Despre Jurnal TV",
+    "privacy": "Politica de confidențialitate",
+    "cookies": "Cookies",
+    "accessibility": "Ajutor accesibilitate",
+    "contact": "Contactează Jurnal TV",
+    "advertise": "Publicitate",
+    "doNotShare": "Nu distribui informațiile mele",
+    "help": "Ajutor & întrebări frecvente",
+    "contentIndex": "Index conținut",
+    "setSource": "Setează sursa preferată",
+    "copyright": "Drepturi de autor 2026 Jurnal TV. Toate drepturile rezervate. Jurnal TV nu este responsabil pentru conținutul site-urilor externe.",
+    "readmore": " Citește despre abordarea noastră privind linkurile externe."
   },
   "common": {
     "readMore": "Citește mai mult",
@@ -74,34 +48,109 @@
     "seeAll": "Vezi toate",
     "share": "Distribuie",
     "save": "Salvează",
-    "cancel": "Anulează",
-    "confirm": "Confirmă",
-    "yes": "Da",
-    "no": "Nu"
+    "saved": "Salvat",
+    "cancel": "Anulează"
   },
-  "errors": {
-    "404": "Pagina nu a fost găsită",
-    "500": "Eroare de server",
-    "notFound": "Conținutul nu există",
-    "generic": "Ceva nu a mers bine"
+  "home": {
+    "title": "Ultimele știri",
+    "breaking": "Ultima oră",
+    "onlyFrom": "Doar de la Jurnal TV",
+    "recommendedAudio": "Audio recomandat",
+    "moreNews": "Mai multe știri"
   },
-  "cookies": {
-    "title": "Folosim cookie-uri",
-    "description": "Folosim cookie-uri pentru a îmbunătăți experiența ta pe site.",
-    "accept": "Acceptă toate",
-    "reject": "Respinge",
-    "settings": "Setări cookie-uri"
-  },
-  "footer": {
-    "about": "Despre noi",
-    "contact": "Contact",
-    "privacy": "Politica de confidențialitate",
-    "terms": "Termeni și condiții",
-    "cookies": "Politica de cookie-uri",
-    "copyright": "Toate drepturile rezervate"
+  "article": {
+    "share": "Distribuie",
+    "save": "Salvează",
+    "saved": "Salvat",
+    "addToGoogle": "Adaugă ca sursă preferată pe Google"
   },
   "theme": {
-    "light": "Temă luminoasă",
-    "dark": "Temă întunecată"
+    "light": "Luminos",
+    "dark": "Întunecat",
+    "system": "Sistem"
+  },
+  "language": {
+    "select": "Selectează limba",
+    "ro": "Română",
+    "en": "Engleză"
+  },
+  "auth": {
+    "signIn": "Autentificare",
+    "register": "Înregistrare",
+    "email": "Email",
+    "password": "Parolă",
+    "confirmPassword": "Confirmă parola",
+    "fullName": "Nume complet",
+    "forgotPassword": "Ai uitat parola?",
+    "noAccount": "Nu ai cont? ",
+    "hasAccount": "Ai deja cont? ",
+    "info": "Intră în contul tău pentru a continua",
+    "create": "Creează un cont nou"
+  },
+
+  "search": {
+    "cauta": "Caută știri, titluri și altele"
+  },
+
+  "submenu": {
+    "usCanada": "SUA & Canada",
+    "uk": "Regatul Unit",
+    "africa": "Africa",
+    "asia": "Asia",
+    "australia": "Australia",
+    "europe": "Europa",
+    "latinAmerica": "America Latină",
+    "middleEast": "Orientul Mijlociu",
+    "inPictures": "În imagini",
+    "inDepth": "Jurnal TV în profunzime",
+    "verify": "Jurnal TV verifică",
+
+    "football": "Fotbal",
+    "cricket": "Cricket",
+    "formula1": "Formula 1",
+    "rugby": "Rugby",
+    "tennis": "Tenis",
+    "golf": "Golf",
+    "cycling": "Ciclism",
+    "athletics": "Atletism",
+
+    "world": "Lumea afacerilor",
+    "technology": "Tehnologia afacerilor",
+    "nyse": "Clopotul de deschidere al NYSE",
+
+    "ai": "Inteligența artificială",
+    "ir": "Revoluția inteligenței",
+    "aimind": "Inteligența artificială",
+
+    "film": "Filme și TV",
+    "music": "Muzică",
+    "art": "Artă și design",
+    "style": "Modă",
+    "books": "Cărți",
+    "entertainment": "Știri de divertisment",
+
+    "arts": "Arta în mișcare",
+
+    "destination": "Destinații",
+    "table": "Masa lumii",
+    "experience": "Cultură și experiențe",
+    "adventure": "Aventuri",
+    "specialist": "Specialiști",
+
+    "science": "Știința",
+    "natural": "Minuni naturale",
+    "climate": "Soluții climatice",
+    "sustainable": "Afacere sustenabilă",
+    "green": "Viața ecologică",
+
+    "podcast": "Categorii de podcast",
+    "radio": "Radio",
+    "faq": "Întrebări frecvente despre audio",
+
+    "maestro": "Maestru Jurnal TV",
+    "discover": "Descoperă lumea",
+
+    "livenews": "Știri live",
+    "livesport": "Sport live"
   }
 }

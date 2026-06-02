@@ -1,148 +1,213 @@
-export const navItems = [
+export interface NavLink {
+  label: string
+  href: string
+  key?: string
+}
+
+export interface NavItem {
+  key: string
+  label: string
+  href: string
+  submenu: {
+    featured: string
+    links: NavLink[]
+  } | null
+}
+
+export const navItems: NavItem[] = [
   {
+    key: 'home',
     label: 'Home',
     href: '/home',
     submenu: null,
   },
   {
+    key: 'news',
     label: 'News',
     href: '/news',
     submenu: {
-      featured: 'US & Canada',
+      featured: 'News',
       links: [
-        { label: 'UK', href: '/news/uk' },
-        { label: 'Africa', href: '/news/africa' },
-        { label: 'Asia', href: '/news/asia' },
-        { label: 'Australia', href: '/news/australia' },
-        { label: 'Europe', href: '/news/europe' },
-        { label: 'Latin America', href: '/news/latin-america' },
-        { label: 'Middle East', href: '/news/middle-east' },
-        { label: 'In Pictures', href: '/news/in-pictures' },
-        { label: 'BBC InDepth', href: '/news/indepth' },
-        { label: 'BBC Verify', href: '/news/verify' },
+        { label: 'US & Canada', href: '/us-canada', key: 'usCanada' },
+        { label: 'UK', href: '/uk', key: 'uk' },
+        { label: 'Africa', href: '/africa', key: 'africa' },
+        { label: 'Asia', href: '/asia', key: 'asia' },
+        { label: 'Australia', href: '/australia', key: 'australia' },
+        { label: 'Europe', href: '/europe', key: 'europe' },
+        { label: 'Latin America', href: '/latin-america', key: 'latinAmerica' },
+        { label: 'Middle East', href: '/middle-east', key: 'middleEast' },
+        { label: 'In Pictures', href: '/in-pictures', key: 'inPictures' },
+        { label: 'Jurnal TV InDepth', href: '/indepth', key: 'inDepth' },
+        { label: 'Jurnal TV Verify', href: '/verify', key: 'verify' },
       ],
     },
   },
   {
+    key: 'sport',
     label: 'Sport',
     href: '/sport',
     submenu: {
       featured: 'Home',
       links: [
-        { label: 'Football', href: '/sport/football' },
-        { label: 'Cricket', href: '/sport/cricket' },
-        { label: 'Formula 1', href: '/sport/formula1' },
-        { label: 'Rugby U', href: '/sport/rugby' },
-        { label: 'Tennis', href: '/sport/tennis' },
-        { label: 'Golf', href: '/sport/golf' },
-        { label: 'Cycling', href: '/sport/cycling' },
-        { label: 'Athletics', href: '/sport/athletics' },
+        { label: 'Football', href: '/football', key: 'football' },
+        { label: 'Cricket', href: '/cricket', key: 'cricket' },
+        { label: 'Formula 1', href: '/formula1', key: 'formula1' },
+        { label: 'Rugby U', href: '/rugby', key: 'rugby' },
+        { label: 'Tennis', href: '/tennis', key: 'tennis' },
+        { label: 'Golf', href: '/golf', key: 'golf' },
+        { label: 'Cycling', href: '/cycling', key: 'cycling' },
+        { label: 'Athletics', href: '/athletics', key: 'athletics' },
       ],
     },
   },
   {
+    key: 'business',
     label: 'Business',
     href: '/business',
     submenu: {
-      featured: 'World of Business',
+      featured: 'Business',
       links: [
-        { label: 'Technology of Business', href: '/business/technology' },
-        { label: 'NYSE Opening Bell', href: '/business/nyse' },
+        { label: 'World of Business', href: '/world', key: 'world' },
+        {
+          label: 'Technology of Business',
+          href: '/technology',
+          key: 'technology',
+        },
+        { label: 'NYSE Opening Bell', href: '/nyse', key: 'nyse' },
       ],
     },
   },
   {
+    key: 'technology',
     label: 'Technology',
     href: '/technology',
     submenu: {
-      featured: 'Artificial Intelligence',
+      featured: 'Technology',
       links: [
         {
-          label: 'Intelligence Revolution',
-          href: '/technology/intelligence-revolution',
+          label: 'Artificial Intelligence',
+          href: '/artificial-intelligence',
+          key: 'ai',
         },
-        { label: 'AI v the Mind', href: '/technology/ai-mind' },
+        {
+          label: 'Intelligence Revolution',
+          href: '/intelligence-revolution',
+          key: 'ir',
+        },
+        { label: 'AI v the Mind', href: '/ai-mind', key: 'aimind' },
       ],
     },
   },
   {
+    key: 'health',
     label: 'Health',
     href: '/health',
     submenu: null,
   },
   {
+    key: 'culture',
     label: 'Culture',
     href: '/culture',
     submenu: {
-      featured: 'Film & TV',
+      featured: 'Culture',
       links: [
-        { label: 'Music', href: '/culture/music' },
-        { label: 'Art & Design', href: '/culture/art-design' },
-        { label: 'Style', href: '/culture/style' },
-        { label: 'Books', href: '/culture/books' },
-        { label: 'Entertainment News', href: '/culture/entertainment' },
+        { label: 'Film & TV', href: '/films-tv', key: 'film' },
+        { label: 'Music', href: '/music', key: 'music' },
+        { label: 'Art & Design', href: '/art-design', key: 'art' },
+        { label: 'Style', href: '/style', key: 'style' },
+        { label: 'Books', href: '/books', key: 'books' },
+        {
+          label: 'Entertainment News',
+          href: '/entertainment',
+          key: 'entertainment',
+        },
       ],
     },
   },
   {
+    key: 'arts',
     label: 'Arts',
     href: '/arts',
     submenu: {
-      featured: 'Arts in Motion',
-      links: [],
+      featured: 'Arts',
+      links: [
+        { label: 'Arts in Motion', href: '/arts-in-motion', key: 'arts' },
+      ],
     },
   },
   {
+    key: 'travel',
     label: 'Travel',
     href: '/travel',
     submenu: {
-      featured: 'Destinations',
+      featured: 'Travel',
       links: [
-        { label: "World's Table", href: '/travel/worlds-table' },
-        { label: 'Culture & Experiences', href: '/travel/culture' },
-        { label: 'Adventures', href: '/travel/adventures' },
-        { label: 'The SpeciaList', href: '/travel/specialist' },
+        { label: 'Destinations', href: '/destinations', key: 'destination' },
+        { label: "World's Table", href: '/worlds-table', key: 'table' },
+        { label: 'Culture & Experiences', href: '/culture', key: 'experience' },
+        { label: 'Adventures', href: '/adventures', key: 'adventure' },
+        { label: 'The SpeciaList', href: '/specialist', key: 'specialist' },
       ],
     },
   },
   {
+    key: 'earth',
     label: 'Earth',
     href: '/earth',
     submenu: {
-      featured: 'Science',
+      featured: 'Earth',
       links: [
-        { label: 'Natural Wonders', href: '/earth/natural-wonders' },
-        { label: 'Climate Solutions', href: '/earth/climate' },
-        { label: 'Sustainable Business', href: '/earth/sustainable' },
-        { label: 'Green Living', href: '/earth/green-living' },
+        { label: 'Science', href: '/science', key: 'science' },
+        { label: 'Natural Wonders', href: '/natural-wonders', key: 'natural' },
+        { label: 'Climate Solutions', href: '/climate', key: 'climate' },
+        {
+          label: 'Sustainable Business',
+          href: '/sustainable',
+          key: 'sustainable',
+        },
+        { label: 'Green Living', href: '/green-living', key: 'green' },
       ],
     },
   },
   {
+    key: 'audio',
     label: 'Audio',
     href: '/audio',
     submenu: {
-      featured: 'Podcast Categories',
+      featured: 'Audio',
       links: [
-        { label: 'Radio', href: '/audio/radio' },
-        { label: 'Audio FAQs', href: '/audio/faqs' },
+        {
+          label: 'Podcast Categories',
+          href: '/podcast-categories',
+          key: 'podcast',
+        },
+        { label: 'Radio', href: '/radio', key: 'radio' },
+        { label: 'Audio FAQs', href: '/faqs', key: 'faq' },
       ],
     },
   },
   {
+    key: 'video',
     label: 'Video',
     href: '/video',
     submenu: {
-      featured: 'BBC Maestro',
-      links: [{ label: 'Discover the World', href: '/video/discover' }],
+      featured: 'Video',
+      links: [
+        { label: 'Jurnal TV Maestro', href: '/maestro', key: 'maestro' },
+        { label: 'Discover the World', href: '/discover', key: 'discover' },
+      ],
     },
   },
   {
+    key: 'live',
     label: 'Live',
     href: '/live',
     submenu: {
-      featured: 'Live News',
-      links: [{ label: 'Live Sport', href: '/live/sport' }],
+      featured: 'Live',
+      links: [
+        { label: 'Live News', href: '/news', key: 'livenews' },
+        { label: 'Live Sport', href: '/sport', key: 'livesport' },
+      ],
     },
   },
 ]
