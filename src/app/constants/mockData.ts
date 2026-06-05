@@ -614,3 +614,191 @@ export const articleDetail: ArticleDetail = {
     ),
   ],
 }
+
+export interface VideoItem {
+  id: string
+  slug: string
+  title: string
+  description: string
+  thumbnailUrl: string
+  videoUrl: string // YouTube embed URL sau MP4 din backend
+  duration: string
+  publishedAt: Date
+  category: string
+  source: string
+  show?: string
+}
+
+export interface AudioItem {
+  id: string
+  slug: string
+  title: string
+  description: string
+  thumbnailUrl: string
+  videoUrl: string
+  duration: string
+  publishedAt: Date
+  category: string
+  source: string
+  show?: string
+}
+
+const makeVideo = (
+  id: string,
+  title: string,
+  description = '',
+  youtubeId: string,
+  category = 'Video',
+  extras = {}
+): VideoItem => ({
+  id,
+  slug: makeSlug(title),
+  title,
+  description,
+  thumbnailUrl: `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`,
+  videoUrl: `https://www.youtube.com/embed/${youtubeId}?autoplay=1`,
+  // de inlocuit cu date din backend direct: videoUrl: `https://api.yoursite.com/videos/${id}.mp4`
+  duration: '7:41',
+  publishedAt: new Date(Date.now() - 1000 * 60 * 60 * Number(id)),
+  category,
+  source: 'BBC News',
+  ...extras,
+})
+
+export const featuredVideo: VideoItem = makeVideo(
+  '1',
+  'Fans rally behind US mens national soccer team as World Cup roster revealed',
+  'Fans share their enthusiasm about World Cup ticket prices and what the sport means to the US.',
+  'CKV15yxAsIQ',
+  'Sport',
+  { show: 'New York City' }
+)
+
+export const missedVideos: VideoItem[] = [
+  makeVideo(
+    '2',
+    'The unseen photos captured on the Royal Yacht Britannia',
+    'The only photographer allowed on board reveals exclusive shots.',
+    'CKV15yxAsIQ',
+    'Culture',
+    { source: 'BBC Select' }
+  ),
+  makeVideo(
+    '3',
+    "Inside Lapland's dramatic high-speed reindeer racing",
+    'The Travel Show goes to Finland.',
+    'dQw4w9WgXcQ',
+    'Travel',
+    { source: 'The Travel Show' }
+  ),
+  makeVideo(
+    '4',
+    'Can a fashion fix help smart glasses finally take off?',
+    'Smart glasses take on a new update.',
+    'dQw4w9WgXcQ',
+    'Technology',
+    { source: 'Tech Now' }
+  ),
+  makeVideo(
+    '5',
+    'Sameena: A rare taste of South India in Manhattan',
+    'Stacy Delikat takes a closer look.',
+    'dQw4w9WgXcQ',
+    'Food',
+    { source: 'Discover the World' }
+  ),
+  makeVideo(
+    '6',
+    'I was told I like Simon Fox',
+    '',
+    'dQw4w9WgXcQ',
+    'Entertainment'
+  ),
+]
+
+export const artsVideos: VideoItem[] = [
+  makeVideo(
+    '7',
+    'What it really takes to make a film from scratch',
+    'At the National Film and Television School, students learn to turn ideas into films.',
+    'dQw4w9WgXcQ',
+    'Arts'
+  ),
+]
+
+export const maestroVideos: VideoItem[] = [
+  makeVideo(
+    '8',
+    "Get a good night's sleep with Stephanie Romiszewski",
+    'Join the world-leading sleep expert.',
+    'dQw4w9WgXcQ',
+    'Health',
+    { show: 'BBC Maestro' }
+  ),
+  makeVideo(
+    '9',
+    'Launch your business with Sharon Bartlett',
+    'Join the youngest judge in Dragons Den.',
+    'dQw4w9WgXcQ',
+    'Business',
+    { show: 'BBC Maestro' }
+  ),
+  makeVideo(
+    '10',
+    'Transform your health with Professor Tim Spector',
+    'Join health guru Tim Spector.',
+    'dQw4w9WgXcQ',
+    'Health',
+    { show: 'BBC Maestro' }
+  ),
+  makeVideo(
+    '11',
+    'Master the craft of cooking with Marco Pierre White',
+    'Go beyond recipes and learn the art of cooking.',
+    'dQw4w9WgXcQ',
+    'Food',
+    { show: 'BBC Maestro' }
+  ),
+  makeVideo('12', 'Learn the art of photography', '', 'dQw4w9WgXcQ', 'Arts', {
+    show: 'BBC Maestro',
+  }),
+]
+
+export const openingBellVideo: VideoItem = makeVideo(
+  '13',
+  'Wall Street opens higher as concerns over Iran crisis ease',
+  'Report says markets seem to be expecting some kind of a deal between the United States and Iran.',
+  'dQw4w9WgXcQ',
+  'Business'
+)
+
+export const scienceVideos: VideoItem[] = [
+  makeVideo(
+    '14',
+    'How deep sea creatures survive',
+    '',
+    'dQw4w9WgXcQ',
+    'Science'
+  ),
+  makeVideo(
+    '15',
+    'The future of renewable energy',
+    '',
+    'dQw4w9WgXcQ',
+    'Science'
+  ),
+  makeVideo(
+    '16',
+    'Inside the worlds largest telescope',
+    '',
+    'dQw4w9WgXcQ',
+    'Science'
+  ),
+  makeVideo(
+    '17',
+    'Climate change effects on Arctic ice',
+    '',
+    'dQw4w9WgXcQ',
+    'Science'
+  ),
+]

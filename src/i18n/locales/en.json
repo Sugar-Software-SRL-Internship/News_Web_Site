@@ -19,7 +19,9 @@
     "search": "Search",
     "menu": "Menu",
     "signIn": "Sign in",
-    "register": "Register"
+    "register": "Register",
+    "maestro": "JurnalTV maestro",
+    "discover": "Discover the world"
   },
   "footer": {
     "followUs": "Follow Jurnal TV on:",
@@ -57,6 +59,13 @@
     "onlyFrom": "Only from Jurnal TV",
     "recommendedAudio": "Recommended audio",
     "moreNews": "More News"
+  },
+  "video": {
+    "missed": "In case you missed it",
+    "motion": "Arts in motion",
+    "maestro": "JurnalTV maestro",
+    "bell": "Opening bell",
+    "science": "Science"
   },
   "article": {
     "share": "Share",
