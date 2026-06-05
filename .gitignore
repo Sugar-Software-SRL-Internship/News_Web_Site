@@ -1,8 +1,9 @@
-<<<<<<< HEAD
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+node_modules/
+frontend/node_modules/
+frontend/next/
 /.pnp
 .pnp.*
 .yarn/*
@@ -12,14 +13,14 @@
 !.yarn/versions
 
 # testing
-/coverage
+coverage/
 
 # next.js
-/.next/
-/out/
+.next/
+out/
 
 # production
-/build
+build/
 
 # misc
 .DS_Store
@@ -40,7 +41,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-=======
 
 *.log
 local_settings.py
@@ -71,4 +71,3 @@ __pycache__/
 **/static/
 **/media/
 **/db.sqlite3
->>>>>>> 43131ec8acc1fccfe08d179d0bf654f8e1f48a13
