@@ -11,6 +11,16 @@ const nextConfig: NextConfig = {
         hostname: 'picsum.photos',
         pathname: '/**',
       },
+      {
+        protocol: 'https' as const,
+        hostname: 'img.youtube.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https' as const,
+        hostname: 'www.youtube.com',
+        pathname: '/**',
+      },
     ],
   },
 }

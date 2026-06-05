@@ -19,7 +19,9 @@
     "search": "Caută",
     "menu": "Meniu",
     "signIn": "Autentificare",
-    "register": "Înregistrare"
+    "register": "Înregistrare",
+    "maestro": "Maestro JurnalTV",
+    "discover": "Descoperă lumea"
   },
   "footer": {
     "followUs": "Urmărește Jurnal TV pe:",
@@ -57,6 +59,13 @@
     "onlyFrom": "Doar de la Jurnal TV",
     "recommendedAudio": "Audio recomandat",
     "moreNews": "Mai multe știri"
+  },
+  "video": {
+    "missed": "Ce ai omis",
+    "motion": "Arta în acțiune",
+    "maestro": "Maestro JurnalTV",
+    "bell": "Clopotul de deschidere",
+    "science": "Știința"
   },
   "article": {
     "share": "Distribuie",
