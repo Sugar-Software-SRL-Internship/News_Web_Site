@@ -4,7 +4,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { SubMenu } from './SubMenu'
-import { navItems } from '@/constants/navigation'
+import { navItems } from '../../constants/navigation'
 
 export function NavBar() {
   const locale = useLocale()

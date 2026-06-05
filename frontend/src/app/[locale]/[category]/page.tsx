@@ -1,8 +1,8 @@
-import { Container } from '@/components/layout/Container'
-import { HeroGrid } from '@/components/news/HeroGrid'
-import { OnlyFromBBC } from '@/components/news/OnlyFromBBC'
-import { RecommendedAudio } from '@/components/news/RecommendedAudio'
-import { MoreNews } from '@/components/news/MoreNews'
+import { Container } from '../../../components/layout/Container'
+import { HeroGrid } from '../../../components/news/HeroGrid'
+import { OnlyFromBBC } from '../../../components/news/OnlyFromBBC'
+import { RecommendedAudio } from '../../../components/news/RecommendedAudio'
+import { MoreNews } from '../../../components/news/MoreNews'
 import {
   heroArticles,
   sideArticles,
@@ -15,11 +15,11 @@ import {
   maestroVideos,
   openingBellVideo,
   scienceVideos,
-} from '@/app/constants/mockData'
+} from '../../constants/mockData'
 import { getTranslations } from 'next-intl/server'
-import { FeaturedVideoSection } from '@/components/video/FeaturedVideoSection'
-import { VideoRow } from '@/components/video/VideoRow'
-import { VideoFeature } from '@/components/video/VideoFeature'
+import { FeaturedVideoSection } from '../../../components/video/FeaturedVideoSection'
+import { VideoRow } from '../../../components/video/VideoRow'
+import { VideoFeature } from '../../../components/video/VideoFeature'
 
 export default async function CategoryPage({
   params,

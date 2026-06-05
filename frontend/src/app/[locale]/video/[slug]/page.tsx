@@ -1,6 +1,6 @@
-import { Container } from '@/components/layout/Container'
-import { VideoCard } from '@/components/video/VideoCard'
-import { VideoDetailHero } from '@/components/video/VideoDetailHero'
+import { Container } from '../../../../components/layout/Container'
+import { VideoCard } from '../../../../components/video/VideoCard'
+import { VideoDetailHero } from '../../../../components/video/VideoDetailHero'
 import {
   featuredVideo,
   maestroVideos,
@@ -8,7 +8,7 @@ import {
   artsVideos,
   openingBellVideo,
   scienceVideos,
-} from '@/app/constants/mockData'
+} from '../../../constants/mockData'
 
 const allVideos = [
   featuredVideo,

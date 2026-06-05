@@ -629,20 +629,6 @@ export interface VideoItem {
   show?: string
 }
 
-export interface AudioItem {
-  id: string
-  slug: string
-  title: string
-  description: string
-  thumbnailUrl: string
-  videoUrl: string
-  duration: string
-  publishedAt: Date
-  category: string
-  source: string
-  show?: string
-}
-
 const makeVideo = (
   id: string,
   title: string,
@@ -801,4 +787,322 @@ export const scienceVideos: VideoItem[] = [
     'dQw4w9WgXcQ',
     'Science'
   ),
+]
+
+export interface AudioItem {
+  id: string
+  slug: string
+  title: string
+  description: string
+  thumbnailUrl: string
+  embedUrl: string
+  duration: string
+  publishedAt: Date
+  category: string
+  source: string
+  show?: string
+  presenter?: string
+  producer?: string
+  editor?: string
+  chapters?: { time: string; title: string }[]
+  availableFor?: string
+  episodeNumber?: number
+}
+
+const makeAudio = (
+  id: string,
+  title: string,
+  description = '',
+  embedUrl: string,
+  category = 'Audio',
+  extras = {}
+): AudioItem => ({
+  id,
+  slug: makeSlug(title),
+  title,
+  description,
+  thumbnailUrl: `https://picsum.photos/seed/audio${id}/300/300`,
+  embedUrl,
+  duration: '36 mins',
+  publishedAt: new Date(Date.now() - 1000 * 60 * 60 * Number(id)),
+  category,
+  source: 'BBC Sounds',
+  ...extras,
+})
+
+// Spotify embed URL format: https://open.spotify.com/embed/episode/EPISODE_ID
+
+export const featuredAudio: AudioItem = makeAudio(
+  'a1',
+  'A History of the United States in 100 Objects',
+  'A concise guide: How America built a hidden empire, one object at a time.',
+  'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+  'History',
+  {
+    show: '100 Objects #2: 60-Degree Screw',
+    presenter: 'Sean Farrington',
+    producer: 'Jeevan Narwan',
+    editor: 'Olivia Baron',
+    availableFor: 'Available for a year',
+    episodeNumber: 42,
+    chapters: [
+      { time: '03:18', title: 'Gen Z loneliness and isolation' },
+      { time: '07:19', title: 'Growth compared to other dating apps' },
+      { time: '09:18', title: 'Growth in the UK and the gender balance' },
+      { time: '15:30', title: 'AI features on the app and authenticity' },
+      { time: '22:37', title: "The younger generation's relationship with AI" },
+      { time: '36:12', title: 'Age restrictions on social media usage' },
+      { time: '39:30', title: 'Tinder and other Match Group apps' },
+      {
+        time: '42:25',
+        title: 'Is "Designed to be deleted" at odds with the business model?',
+      },
+      { time: '46:20', title: 'The cost of living crisis' },
+      {
+        time: '54:46',
+        title: 'Her career in tech, including roles at Spotify',
+      },
+    ],
+  }
+)
+
+export const recommendedAudioItems: AudioItem[] = [
+  makeAudio(
+    'a2',
+    'The battle to save Jeanne, flood-ravaged shipping',
+    'A story about saving history.',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Culture',
+    { show: 'BBC Sounds', duration: '28 mins' }
+  ),
+  makeAudio(
+    'a3',
+    'The protests that sparked the Tiananmen Square massacre',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'History',
+    { show: 'BBC History', duration: '45 mins' }
+  ),
+  makeAudio(
+    'a4',
+    'The Black Power Mixtape: I say what I mean',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Culture',
+    { show: 'BBC Culture', duration: '32 mins' }
+  ),
+  makeAudio(
+    'a5',
+    'Run for World Cup freedom: How sport changes lives',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Sport',
+    { show: 'BBC Sport', duration: '41 mins' }
+  ),
+  makeAudio(
+    'a6',
+    'Hinge CEO: The Cost of Living Crunch Is Changing How We Date',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Business',
+    { show: 'Business Matters', duration: '58 mins' }
+  ),
+  makeAudio(
+    'a7',
+    'Why the UK honored Marco Polo, Phan and Dark Xygas',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Culture',
+    { show: 'BBC Sounds', duration: '24 mins' }
+  ),
+  makeAudio(
+    'a8',
+    'Australian politics: The new wave',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Politics',
+    { show: 'BBC World', duration: '37 mins' }
+  ),
+]
+
+export const globalNewsAudio: AudioItem = makeAudio(
+  'a9',
+  "US House votes to curb Trump's war powers",
+  'In a rebuke to the president, Congress passes resolution calling for an end to Iran war.',
+  'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+  'Politics',
+  { show: 'Global News Podcast', duration: '36 mins' }
+)
+
+export const worldBusinessAudio: AudioItem[] = [
+  makeAudio(
+    'a10',
+    'Venezuela: A media-savvy leader is in crisis',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Business',
+    { show: 'World Business Report', duration: '24 mins' }
+  ),
+  makeAudio(
+    'a11',
+    "Lay's latest: Trump tariff will lead to massive layoffs",
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Business',
+    { show: 'World Business Report', duration: '31 mins' }
+  ),
+  makeAudio(
+    'a12',
+    'The Ukraine: to refuse de-industrialize its political policy',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Business',
+    { show: 'World Business Report', duration: '28 mins' }
+  ),
+  makeAudio(
+    'a13',
+    'Russian ceasefire coming: Israel refuses a two-state model attack in St. Petersburg',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Business',
+    { show: 'World Business Report', duration: '45 mins' }
+  ),
+  makeAudio(
+    'a14',
+    'Who gets to regulate AI',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Technology',
+    { show: 'World Business Report', duration: '22 mins' }
+  ),
+]
+
+export const deeperConversations: AudioItem[] = [
+  makeAudio(
+    'a15',
+    'Arike Ogunbowale, Soccer leader: Can we imagine a music is cooking',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Culture',
+    { show: 'Deeper Conversations', duration: '52 mins' }
+  ),
+  makeAudio(
+    'a16',
+    'Charles Miner, singer: Music is cooking',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Culture',
+    { show: 'Deeper Conversations', duration: '48 mins' }
+  ),
+  makeAudio(
+    'a17',
+    'Jennifer Pirlo, Analyzing chief: Financial systems child available systems',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Business',
+    { show: 'Deeper Conversations', duration: '61 mins' }
+  ),
+  makeAudio(
+    'a18',
+    'Daniel Webber, Alexander President: A war on president',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Politics',
+    { show: 'Deeper Conversations', duration: '44 mins' }
+  ),
+  makeAudio(
+    'a19',
+    'Katrina Mix, Sierra Leone First Lady: Speaking up',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Politics',
+    { show: 'Deeper Conversations', duration: '39 mins' }
+  ),
+]
+
+export const historyAudio: AudioItem[] = [
+  makeAudio(
+    'a20',
+    'The first Irish language television channel',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'History',
+    { show: 'BBC History', duration: '33 mins' }
+  ),
+  makeAudio(
+    'a21',
+    'Rewinding the Buchanan interviews',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'History',
+    { show: 'BBC History', duration: '27 mins' }
+  ),
+  makeAudio(
+    'a22',
+    'Filming Titanic in Mexico',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'History',
+    { show: 'BBC History', duration: '41 mins' }
+  ),
+  makeAudio(
+    'a23',
+    "Teenaged Mexico's deadly gang nightmare",
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'History',
+    { show: 'BBC History', duration: '55 mins' }
+  ),
+]
+
+export const sportAudio: AudioItem[] = [
+  makeAudio(
+    'a24',
+    'Mark McCall: Kind of on me',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Sport',
+    { show: 'Rugby Union Weekly', duration: '48 mins' }
+  ),
+  makeAudio(
+    'a25',
+    'Nickson says: we need for tomorrow change ahead of Saul Test',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Sport',
+    { show: 'BBC Sport', duration: '35 mins' }
+  ),
+  makeAudio(
+    'a26',
+    'Rekha: Inside England with Freya Godfrey and Laura Kendall',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Sport',
+    { show: 'BBC Sport', duration: '52 mins' }
+  ),
+  makeAudio(
+    'a27',
+    'Remember: Where... We Had A Golden Generation Also Known',
+    '',
+    'https://open.spotify.com/embed/episode/3NRFbAHbMTJW8bxXEKhMKl',
+    'Sport',
+    { show: 'BBC Sport', duration: '44 mins' }
+  ),
+]
+
+export const audioCategories = [
+  { label: 'Business', imageUrl: 'https://picsum.photos/seed/cat1/300/200' },
+  { label: 'Comedy', imageUrl: 'https://picsum.photos/seed/cat2/300/200' },
+  { label: 'History', imageUrl: 'https://picsum.photos/seed/cat3/300/200' },
+  { label: 'News', imageUrl: 'https://picsum.photos/seed/cat4/300/200' },
+  {
+    label: 'Science and health',
+    imageUrl: 'https://picsum.photos/seed/cat5/300/200',
+  },
+  {
+    label: 'Society and culture',
+    imageUrl: 'https://picsum.photos/seed/cat6/300/200',
+  },
+  { label: 'Sport', imageUrl: 'https://picsum.photos/seed/cat7/300/200' },
+  { label: 'True crime', imageUrl: 'https://picsum.photos/seed/cat8/300/200' },
 ]

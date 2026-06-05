@@ -1,7 +1,7 @@
-import { Container } from '@/components/layout'
-import { VideoFeature } from '@/components/video/VideoFeature'
-import { VideoRow } from '@/components/video/VideoRow'
-import { FeaturedVideoSection } from '@/components/video/FeaturedVideoSection'
+import { Container } from '../../../components/layout'
+import { VideoFeature } from '../../../components/video/VideoFeature'
+import { VideoRow } from '../../../components/video/VideoRow'
+import { FeaturedVideoSection } from '../../../components/video/FeaturedVideoSection'
 import {
   featuredVideo,
   missedVideos,
@@ -9,7 +9,7 @@ import {
   maestroVideos,
   openingBellVideo,
   scienceVideos,
-} from '@/app/constants/mockData'
+} from '../../constants/mockData'
 import { getTranslations } from 'next-intl/server'
 
 export default async function VideoPages() {
