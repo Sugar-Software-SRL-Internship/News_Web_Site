@@ -1,13 +1,12 @@
 'use client'
 import Link from 'next/link'
-import { VideoItem } from '@/app/constants/mockData'
+import { VideoItem } from '../../app/constants/mockData'
 import { VideoPlayer } from './VideoPlayer'
 import { useLocale, useTranslations } from 'next-intl'
 
 interface VideoFeatureProps {
   video: VideoItem
   title: string
-  videos: VideoItem[]
 }
 
 export function VideoFeature({ video, title }: VideoFeatureProps) {
