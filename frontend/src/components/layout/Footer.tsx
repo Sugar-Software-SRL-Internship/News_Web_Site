@@ -1,7 +1,7 @@
 'use client'
 
-import { ThemeToggle } from '@/components/ThemeToggle'
-import { Logo } from '@/components/navigation/Logo'
+import { ThemeToggle } from '../ThemeToggle'
+import { Logo } from '../navigation/Logo'
 import { LanguageSwitcher } from '../LanguageSwitcher'
 import { useLocale, useTranslations } from 'next-intl'
 import Link from 'next/link'
